@@ -20,6 +20,4 @@ def reg_handlers(bot: TeleBot):
     #
     #     bot.send_message(message.chat.id, 'Чтобы начать — введите /help', reply_markup=first_step_markup())
 
-print('рырвары')
-
 
