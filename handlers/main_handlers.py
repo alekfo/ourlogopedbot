@@ -136,6 +136,7 @@ def reg_handlers(bot: TeleBot):
                 data['child_birthday'] = message.text
                 Client.create(
                     clients_id=message.from_user.id,
+                    clients_chat_id=message.chat.id,
                     clients_name=data['name'],
                     clients_sirname=data['sirname'],
                     clients_number=data['number'],

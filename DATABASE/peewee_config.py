@@ -11,14 +11,15 @@ class BaseModel(Model):
 
 class Client(BaseModel):
     clients_id = IntegerField(primary_key=True)
+    clients_chat_id = IntegerField(null=False)
     clients_name = CharField(null=False)
     clients_sirname = CharField(null=False)
     clients_number = CharField(null=False)
     clients_child_name = CharField(null=False)
     clients_child_birthday = DateField(null=False)
     def __str__(self):
-        return ('1. Имя: {name}\n2. Фамилия: {sirname}\n3. Номер телефона: {phone_number}\n'
-                '4. ФИО ребенка: {child_name}\n5. Дата рождения ребенка: {child_birthday}\n').format(
+        return ('Имя: {name}\nФамилия: {sirname}\nНомер телефона: {phone_number}\n'
+                'ФИО ребенка: {child_name}\nДата рождения ребенка: {child_birthday}\n').format(
             name=self.clients_name,
             sirname=self.clients_sirname,
             phone_number=self.clients_number,
