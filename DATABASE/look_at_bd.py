@@ -1,4 +1,4 @@
-from peewee_config import db, Client, Schedule
+from peewee_config import db, Client
 
 with db:
     client_list = Client.select()

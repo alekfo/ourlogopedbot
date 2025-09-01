@@ -16,7 +16,7 @@ def start_registration():
     keyboard.add(button_1)
     return keyboard
 
-def go_to_client_menu():
+def go_to_menu():
     # Создаём объекты кнопок.
     button_1 = KeyboardButton(text=r"Перейти в основное меню")
     # Создаём объект клавиатуры, добавляя в него кнопки.
@@ -26,20 +26,12 @@ def go_to_client_menu():
 
 def main_clients_commands():
     # Создаём объекты кнопок.
-    button_1 = KeyboardButton(text=r"/help")
-    button_2 = KeyboardButton(text=r"/schedule")
-    button_3 = KeyboardButton(text=r"/feedback")
+    button_1 = KeyboardButton(text=r"Информация")
+    button_2 = KeyboardButton(text=r"Расписание")
+    button_3 = KeyboardButton(text=r"Отзывы и предложения")
     # Создаём объект клавиатуры, добавляя в него кнопки.
     keyboard = ReplyKeyboardMarkup(resize_keyboard=True)
     keyboard.add(button_1, button_2, button_3)
-    return keyboard
-
-def go_to_admin_menu():
-    # Создаём объекты кнопок.
-    button_1 = KeyboardButton(text=r"/help")
-    # Создаём объект клавиатуры, добавляя в него кнопки.
-    keyboard = ReplyKeyboardMarkup(resize_keyboard=True)
-    keyboard.add(button_1)
     return keyboard
 
 def main_admin_commands():
@@ -51,5 +43,15 @@ def main_admin_commands():
     # Создаём объект клавиатуры, добавляя в него кнопки.
     keyboard = ReplyKeyboardMarkup(resize_keyboard=True)
     keyboard.add(button_1, button_2, button_3, button_4)
+    return keyboard
+
+def schedule_menu():
+    # Создаём объекты кнопок.
+    button_1 = KeyboardButton(text=r"Посмотреть расписание")
+    button_2 = KeyboardButton(text=r"Добавить расписание")
+    button_3 = KeyboardButton(text=r"Изменить расписание")
+    # Создаём объект клавиатуры, добавляя в него кнопки.
+    keyboard = ReplyKeyboardMarkup(resize_keyboard=True)
+    keyboard.add(button_1, button_2, button_3)
     return keyboard
 

@@ -15,5 +15,7 @@ class reg_states_client(StatesGroup):
 class reg_states_admin(StatesGroup):
 
     admin_menu = State()
-    choise_action = State()
-    menu = State()
+    in_any_block = State()
+    in_schedule = State()
+    process_file = State()
+    show_schedule = State()

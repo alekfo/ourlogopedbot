@@ -4,10 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b5e7868-f73e-4f85-a9bf-b8ab30017f45" name="Changes" comment="first_draft">
+    <list default="true" id="5b5e7868-f73e-4f85-a9bf-b8ab30017f45" name="Changes" comment="there_are_data">
+      <change afterPath="$PROJECT_DIR$/DATABASE/to_delete_data.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/handlers/clients_handlers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/handlers/menu_handlers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/handlers/registration_handlers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/handlers/schedule_handlers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DATABASE/look_at_bd.py" beforeDir="false" afterPath="$PROJECT_DIR$/DATABASE/look_at_bd.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DATABASE/peewee_config.py" beforeDir="false" afterPath="$PROJECT_DIR$/DATABASE/peewee_config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/main_handlers.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/main_handlers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/main_handlers.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/start_handlers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/keyboards/main_keyboards.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/main_keyboards.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/states.py" beforeDir="false" afterPath="$PROJECT_DIR$/states.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +47,7 @@
     "Python.look_at_bd.executor": "Run",
     "Python.main.executor": "Run",
     "Python.main_handlers.executor": "Run",
+    "Python.to_delete_data.executor": "Run",
     "Python.вапывап.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
@@ -119,7 +129,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="main_handlers" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="start_handlers" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="ourlogopedbot" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -132,7 +142,29 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/handlers/main_handlers.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\alekf\OneDrive\Desktop\Python\ourlogopedbot\handlers\start_handlers.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="to_delete_data" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="ourlogopedbot" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/DATABASE" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/DATABASE/to_delete_data.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -144,8 +176,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.main" />
+        <item itemvalue="Python.to_delete_data" />
         <item itemvalue="Python.look_at_bd" />
-        <item itemvalue="Python.main_handlers" />
+        <item itemvalue="Python.start_handlers" />
         <item itemvalue="Python.вапывап" />
       </list>
     </recent_temporary>
@@ -181,12 +214,21 @@
       <option name="project" value="LOCAL" />
       <updated>1756631882973</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="there_are_data">
+      <option name="closed" value="true" />
+      <created>1756662315341</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1756662315341</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="new" />
     <MESSAGE value="first_draft" />
-    <option name="LAST_COMMIT_MESSAGE" value="first_draft" />
+    <MESSAGE value="there_are_data" />
+    <option name="LAST_COMMIT_MESSAGE" value="there_are_data" />
   </component>
 </project>

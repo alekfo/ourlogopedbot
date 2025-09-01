@@ -2,7 +2,14 @@ import telebot
 from telebot.storage import StateMemoryStorage
 from telebot import custom_filters
 from config import BOT_TOKEN
-from handlers.main_handlers import reg_handlers
+
+from handlers.start_handlers import reg_start_handlers
+from handlers.menu_handlers import reg_menu_handlers
+from handlers.clients_handlers import reg_clients_handlers
+from handlers.registration_handlers import reg_registration_handlers
+from handlers.schedule_handlers import reg_schedule_handlers
+
+from DATABASE.peewee_config import create_models
 
 state_storage = StateMemoryStorage()
 
@@ -17,9 +24,17 @@ def main():
     телеграма
     """
 
+    create_models()
+
     bot = telebot.TeleBot(BOT_TOKEN, state_storage=state_storage)
     bot.add_custom_filter(custom_filters.StateFilter(bot))
-    reg_handlers(bot)
+
+    reg_menu_handlers(bot)
+    reg_schedule_handlers(bot)
+    reg_clients_handlers(bot)
+    reg_registration_handlers(bot)
+    reg_start_handlers(bot)
+
     bot.infinity_polling()
 
 if __name__ == '__main__':
