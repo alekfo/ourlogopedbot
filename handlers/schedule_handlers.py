@@ -57,13 +57,13 @@ def reg_schedule_handlers(bot: TeleBot):
             # Загружаем Excel файл в
             workbook = openpyxl.load_workbook(excel_data)
             sheet = workbook.active
-            monday_data = sheet.cell(8, 2).value                        #забираем значение из ячейки
+            monday_data = sheet.cell(2, 2).value                        #забираем значение из ячейки
             # formated_data = datetime.strptime(monday_data, "%d.%m.%Y").date()     #преобразуем в DateField
             Week.delete().where(Week.monday_date == monday_data).execute()                  # Удаляем для избежания повтора уникальности
             curr_week = Week.create(monday_date=monday_data)
             Lesson.delete().where(Lesson.weekly_schedule == curr_week).execute()
             for i_row in range(2, 8):
-                for i_col in range(2, 13):
+                for i_col in range(3, 14):
                     cell = sheet.cell(i_row, i_col).value
                     if cell is None:
                         continue
@@ -71,10 +71,11 @@ def reg_schedule_handlers(bot: TeleBot):
                         curr_client = Client.get_or_none(Client.clients_child_name == cell)
                         if curr_client:
                             Lesson.create(
+                                lesson_date=sheet.cell(row=i_row, column=2).value,
                                 weekly_schedule=curr_week,
                                 client=curr_client,
                                 day_of_week=i_row - 2,
-                                lesson_number=i_col - 1
+                                lesson_number=i_col - 2
                             )
                         else:
                             raise TypeError(f'В расписание добавлен не зарегистрированный пользователь - {cell}. '

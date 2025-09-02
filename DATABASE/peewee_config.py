@@ -60,6 +60,8 @@ class Lesson(BaseModel):
     }
 
     lesson_id = AutoField(primary_key=True)
+    lesson_date = DateField(null=False)
+    confirm_flag = BooleanField(default=False)
     # Когда расписание удаляется, удаляются все связанные с ним уроки (CASCADE).
     weekly_schedule = ForeignKeyField(Week, backref='lessons', on_delete='CASCADE')
     # Если клиент удаляется, можно либо установить NULL, либо запретить удаление.
@@ -69,8 +71,9 @@ class Lesson(BaseModel):
     lesson_number = IntegerField(constraints=[Check('lesson_number >= 1 AND lesson_number <= 11')])
 
     def __str__(self):
-        return ('{day}:\n    {lesson} - {client}\n'.format(
+        return ('{day} ({date}):\n    {lesson} - {client}\n'.format(
             day=self.days_dict.get(self.day_of_week, 'Неизвестный день'),
+            date=self.lesson_date,
             lesson=self.lessons_dict.get(self.lesson_number, 'Неизвестное время'),
             client=self.client.clients_child_name if self.client else 'Свободно'
         ))

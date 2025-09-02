@@ -6,17 +6,15 @@ from datetime import datetime
 #     a = Week.get(Week.monday_date == target_date)
 #     print(a)
 
-# with db:
-#     a = Lesson.select()
-#     for i in a:
-#         print(a.client.clients_child_name)
-
 with db:
-    a = Client.get(Client.clients_child_name == 'Егор Королев')
-    lesson = a.lessons
-    for i in lesson:
-        print(i.day_of_week)
-        print(i.lesson_number)
+    db.drop_tables([Lesson], safe=True)
+
+# with db:
+#     a = Client.get(Client.clients_child_name == 'Егор Королев')
+#     lesson = a.lessons
+#     for i in lesson:
+#         print(i.day_of_week)
+#         print(i.lesson_number)
 #
     # # Удалить ее
     # a.delete_instance()
