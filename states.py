@@ -19,3 +19,5 @@ class reg_states_admin(StatesGroup):
     in_schedule = State()
     process_file = State()
     show_schedule = State()
+    in_downloads = State()
+    in_downloads_schedule = State()

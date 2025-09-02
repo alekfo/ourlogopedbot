@@ -1,13 +1,13 @@
 from peewee_config import db, Week, Lesson, Client
-from datetime import datetime
+from datetime import datetime, timedelta
 #
 # with db:
 #     target_date = datetime.strptime("01.09.2025", "%d.%m.%Y").date()
 #     a = Week.get(Week.monday_date == target_date)
 #     print(a)
 
-with db:
-    db.drop_tables([Lesson], safe=True)
+# with db:
+#     db.drop_tables([Lesson], safe=True)
 
 # with db:
 #     a = Client.get(Client.clients_child_name == 'Егор Королев')
@@ -19,3 +19,8 @@ with db:
     # # Удалить ее
     # a.delete_instance()
     # print("Запись удалена")
+target_date = datetime.strptime("01.09.2025", "%d.%m.%Y").date()
+
+next_day = target_date + timedelta(days=1)
+
+print(next_day)

@@ -26,32 +26,60 @@ def go_to_menu():
 
 def main_clients_commands():
     # Создаём объекты кнопок.
-    button_1 = KeyboardButton(text=r"Информация")
-    button_2 = KeyboardButton(text=r"Расписание")
-    button_3 = KeyboardButton(text=r"Отзывы и предложения")
+    buttons = [
+        r"Информация",
+        r"Расписание",
+        r"Отзывы и предложения"
+    ]
     # Создаём объект клавиатуры, добавляя в него кнопки.
     keyboard = ReplyKeyboardMarkup(resize_keyboard=True)
-    keyboard.add(button_1, button_2, button_3)
+
+    for button_text in buttons:
+        keyboard.add(KeyboardButton(text=button_text))
     return keyboard
 
 def main_admin_commands():
     # Создаём объекты кнопок.
-    button_1 = KeyboardButton(text=r"ИНФО о клиентах")
-    button_2 = KeyboardButton(text=r"Управление клиентами")
-    button_3 = KeyboardButton(text=r"Управление расписанием")
-    button_4 = KeyboardButton(text=r"Выгрузка данных")
+    buttons = [
+        r"ИНФО о клиентах",
+        r"Управление клиентами",
+        r"Управление расписанием",
+        r"Выгрузка данных"
+    ]
     # Создаём объект клавиатуры, добавляя в него кнопки.
     keyboard = ReplyKeyboardMarkup(resize_keyboard=True)
-    keyboard.add(button_1, button_2, button_3, button_4)
+
+    for button_text in buttons:
+        keyboard.add(KeyboardButton(text=button_text))
     return keyboard
 
 def schedule_menu():
     # Создаём объекты кнопок.
-    button_1 = KeyboardButton(text=r"Посмотреть расписание")
-    button_2 = KeyboardButton(text=r"Добавить расписание")
-    button_3 = KeyboardButton(text=r"Изменить расписание")
+    buttons = [
+        r"Посмотреть расписание",
+        r"Добавить расписание",
+        r"Изменить расписание"
+    ]
+
     # Создаём объект клавиатуры, добавляя в него кнопки.
     keyboard = ReplyKeyboardMarkup(resize_keyboard=True)
-    keyboard.add(button_1, button_2, button_3)
+
+    for button_text in buttons:
+        keyboard.add(KeyboardButton(text=button_text))
+    return keyboard
+
+def downloads_type():
+    # Создаём объекты кнопок.
+    buttons = [
+        r"Данные активных клиентов",
+        r"Расписания",
+        r"Архивные данные"
+    ]
+
+    # Создаём объект клавиатуры, добавляя в него кнопки.
+    keyboard = ReplyKeyboardMarkup(resize_keyboard=True)
+
+    for button_text in buttons:
+        keyboard.add(KeyboardButton(text=button_text))
     return keyboard
 

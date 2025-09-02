@@ -14,21 +14,14 @@ from keyboards.main_keyboards import (
     schedule_menu)
 
 def reg_menu_handlers(bot: TeleBot):
-    client_commands = [
-        BotCommand("/info", "Показать информацию о возможностях бота"),
-        BotCommand("/schedule", "Посмотреть свое расписание"),
-        BotCommand("/feedback", "Оставить отзыв или предложения")
-    ]
-    bot.set_my_commands(client_commands)
-
 # ========БЛОК ОСНОВНОГО МЕНЮ КЛИЕНТА=========
     @bot.message_handler(state=reg_states_client.in_menu)
     def show_client_cmd(message: Message):
-        cmds = bot.get_my_commands()
         output_txt = 'Доступные команды: \n\n'
+        output_txt += '/info - Показать информацию о возможностях бота\n'
+        output_txt += '/schedule - Посмотреть свое расписание\n'
+        output_txt += '/feedback - Оставить отзыв или предложения\n'
 
-        for cmd in cmds:
-            output_txt += f'{cmd.command} - {cmd.description}\n'
         bot.send_message(message.chat.id, output_txt, reply_markup=main_clients_commands())
         bot.set_state(message.from_user.id, reg_states_client.in_any_block, message.chat.id)
     # ========КОНЕЦ БЛОКА ОСНОВНОГО МЕНЮ КЛИЕНТА=========

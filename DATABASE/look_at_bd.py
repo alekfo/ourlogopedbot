@@ -4,4 +4,10 @@ with db:
     client_list = Client.select()
     print(f'Имеющиеся клиенты:\n')
     for i_index, i_client in enumerate(client_list):
-        print(f'{i_index + 1}:\n{i_client}')
+        print(f'ID клиента: {i_client.clients_id}\n'
+              f'ID чата клиента: {i_client.clients_chat_id}\n'
+              f'ИМЯ клиента: {i_client.clients_name}\n'
+              f'ФАМИЛИЯ клиента: {i_client.clients_sirname}\n'
+              f'НОМЕРА клиента: {i_client.clients_number}\n'
+              f'ИМЯ ребенка клиента: {i_client.clients_child_name}\n'
+              f'ДР ребенка клиента: {i_client.clients_child_birthday}\n')
