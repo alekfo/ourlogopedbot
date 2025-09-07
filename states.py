@@ -11,6 +11,7 @@ class reg_states_client(StatesGroup):
 
     in_menu = State()
     in_any_block = State()
+    get_feedback = State()
 
 class reg_states_admin(StatesGroup):
 
@@ -21,3 +22,4 @@ class reg_states_admin(StatesGroup):
     show_schedule = State()
     in_downloads = State()
     in_downloads_schedule = State()
+    mass_mailing_state = State()

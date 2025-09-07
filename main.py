@@ -9,6 +9,9 @@ from handlers.clients_handlers import reg_clients_handlers
 from handlers.registration_handlers import reg_registration_handlers
 from handlers.schedule_handlers import reg_schedule_handlers
 from handlers.downloads_handlers import reg_downloads_handlers
+from handlers.mass_mailing_handler import reg_mass_mailing_handler
+from handlers.info_for_admin_handler import reg_info_about_clients
+from handlers.menage_clients import reg_menage_clients
 
 from DATABASE.peewee_config import create_models
 
@@ -30,8 +33,12 @@ def main():
     bot = telebot.TeleBot(BOT_TOKEN, state_storage=state_storage)
     bot.add_custom_filter(custom_filters.StateFilter(bot))
     reg_menu_handlers(bot)
+    reg_info_about_clients(bot)
     reg_schedule_handlers(bot)
+    reg_menage_clients(bot)
     reg_downloads_handlers(bot)
+    reg_mass_mailing_handler(bot)
+
     reg_clients_handlers(bot)
     reg_registration_handlers(bot)
     reg_start_handlers(bot)

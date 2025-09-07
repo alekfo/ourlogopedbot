@@ -4,12 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b5e7868-f73e-4f85-a9bf-b8ab30017f45" name="Changes" comment="set_schedule_with_flag">
-      <change afterPath="$PROJECT_DIR$/handlers/downloads_handlers.py" afterDir="false" />
+    <list default="true" id="5b5e7868-f73e-4f85-a9bf-b8ab30017f45" name="Changes" comment="add_downloads">
+      <change afterPath="$PROJECT_DIR$/handlers/info_for_admin_handler.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/handlers/mass_mailing_handler.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/handlers/menage_clients.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DATABASE/look_at_bd.py" beforeDir="false" afterPath="$PROJECT_DIR$/DATABASE/look_at_bd.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DATABASE/to_delete_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/DATABASE/to_delete_data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DATABASE/peewee_config.py" beforeDir="false" afterPath="$PROJECT_DIR$/DATABASE/peewee_config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/clients_handlers.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/clients_handlers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/downloads_handlers.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/downloads_handlers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/handlers/menu_handlers.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/menu_handlers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/schedule_handlers.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/schedule_handlers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/keyboards/main_keyboards.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/main_keyboards.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/states.py" beforeDir="false" afterPath="$PROJECT_DIR$/states.py" afterDir="false" />
@@ -172,8 +176,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.main" />
-        <item itemvalue="Python.to_delete_data" />
         <item itemvalue="Python.look_at_bd" />
+        <item itemvalue="Python.to_delete_data" />
         <item itemvalue="Python.start_handlers" />
         <item itemvalue="Python.вапывап" />
       </list>
@@ -234,7 +238,15 @@
       <option name="project" value="LOCAL" />
       <updated>1756786626704</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="add_downloads">
+      <option name="closed" value="true" />
+      <created>1756821436203</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1756821436203</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -254,6 +266,7 @@
     <MESSAGE value="there_are_data" />
     <MESSAGE value="set_schedule" />
     <MESSAGE value="set_schedule_with_flag" />
-    <option name="LAST_COMMIT_MESSAGE" value="set_schedule_with_flag" />
+    <MESSAGE value="add_downloads" />
+    <option name="LAST_COMMIT_MESSAGE" value="add_downloads" />
   </component>
 </project>

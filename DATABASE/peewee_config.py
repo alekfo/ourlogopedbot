@@ -19,8 +19,8 @@ class Client(BaseModel):
     clients_child_name = CharField(null=False)
     clients_child_birthday = DateField(null=False)
     def __str__(self):
-        return ('Имя: {name}\nФамилия: {sirname}\nНомер телефона: {phone_number}\n'
-                'ФИО ребенка: {child_name}\nДата рождения ребенка: {child_birthday}\n').format(
+        return ('\tИмя: {name}\n\tФамилия: {sirname}\n\tНомер телефона: {phone_number}\n\t'
+                'ФИО ребенка: {child_name}\n\tДата рождения ребенка: {child_birthday}\n\n').format(
             name=self.clients_name,
             sirname=self.clients_sirname,
             phone_number=self.clients_number,
@@ -71,12 +71,15 @@ class Lesson(BaseModel):
     lesson_number = IntegerField(constraints=[Check('lesson_number >= 1 AND lesson_number <= 11')])
 
     def __str__(self):
-        return ('{day} ({date}):\n    {lesson} - {client}\n'.format(
+        return ('{day} ({date}):\n    {lesson} - {client_name} {client_sirname}\n'.format(
             day=self.days_dict.get(self.day_of_week, 'Неизвестный день'),
             date=self.lesson_date,
             lesson=self.lessons_dict.get(self.lesson_number, 'Неизвестное время'),
-            client=self.client.clients_child_name if self.client else 'Свободно'
+            client_name=self.client.clients_name if self.client else 'Свободно',
+            client_sirname=self.client.clients_sirname if self.client else 'Свободно'
         ))
+
+
 
     class Meta:
         # Один слот в расписании (день + номер урока) может быть занят только одним уроком в рамках одного недельного расписания.
@@ -85,15 +88,20 @@ class Lesson(BaseModel):
         )
         database = db
 
+class Feedback(BaseModel):
+    feedback_id = IntegerField(primary_key=True)
+    client = ForeignKeyField(Client, backref='feedback')
+    text = CharField(null=False)
+    feedback_date = DateField(null=False)
 
-    # def __str__(self):
-    #     return ('Расписание {clients_name}:\n'
-    #             '1. {first_day}\n2. {second_day}\n3. {third_day}\n4. {fourth_day}').format(
-    #         first_day=self.day1,
-    #         second_day=self.day2,
-    #         third_day=self.day3,
-    #         fourth_day=self.day4
-    #     )
+    def __str__(self):
+        return ('{date}: {client_name} {client_sirname} оставил следующее сообщение:\n{text}').format(
+            date=self.feedback_date,
+            client_name=self.client.clients_name,
+            client_sirname=self.client.clients_sirname,
+            text=self.text
+        )
+
 
 def create_models():
     """

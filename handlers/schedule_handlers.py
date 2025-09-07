@@ -31,6 +31,17 @@ def reg_schedule_handlers(bot: TeleBot):
         bot.set_state(message.from_user.id, reg_states_admin.in_schedule, message.chat.id)
 # ========КОНЕЦ БЛОКА ВЫБОРА ДЕЙСТВИЯ НАД РАСПИСАНИЕМ===========
 
+#====НАЧАЛО БЛОКА ОТМЕНЫ=++===
+    @bot.message_handler(state=reg_states_admin.in_schedule,
+                        func=lambda message: message.text == 'Вернуться в основное меню')
+    def return_to_menu(message: Message):
+        bot.send_message(message.chat.id,
+                         'Выберите действие',
+                         reply_markup=main_admin_commands())
+        bot.set_state(message.from_user.id, reg_states_admin.in_any_block, message.chat.id)
+#====КОНЕЦ БЛОКА ОТМЕНЫ=++===
+
+
 # ========ДОБАВЛЕНИЕ РАСПИСАНИЯ===========
     @bot.message_handler(state=reg_states_admin.in_schedule,
                          func=lambda message: message.text == 'Добавить расписание')
@@ -58,7 +69,7 @@ def reg_schedule_handlers(bot: TeleBot):
             workbook = openpyxl.load_workbook(excel_data)
             sheet = workbook.active
             monday_data = sheet.cell(2, 2).value                        #забираем значение из ячейки
-            # formated_data = datetime.strptime(monday_data, "%d.%m.%Y").date()     #преобразуем в DateField
+            # formated_data = datetime.strptime(monday_data, "%d.%m.%Y").date()      #преобразуем в DateField
             Week.delete().where(Week.monday_date == monday_data).execute()                  # Удаляем для избежания повтора уникальности
             curr_week = Week.create(monday_date=monday_data)
             Lesson.delete().where(Lesson.weekly_schedule == curr_week).execute()
@@ -68,7 +79,9 @@ def reg_schedule_handlers(bot: TeleBot):
                     if cell is None:
                         continue
                     else:
-                        curr_client = Client.get_or_none(Client.clients_child_name == cell)
+                        cell_list = cell.split()
+                        name, sirname = cell_list
+                        curr_client = Client.get_or_none((Client.clients_name == name) & (Client.clients_sirname == sirname))
                         if curr_client:
                             Lesson.create(
                                 lesson_date=sheet.cell(row=i_row, column=2).value,

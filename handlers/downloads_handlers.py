@@ -30,6 +30,18 @@ def reg_downloads_handlers(bot: TeleBot):
         bot.set_state(message.from_user.id, reg_states_admin.in_downloads, message.chat.id)
     # ========БЛОК ВЫБОРА ТИПА ВЫГРУЗКИ===========
 
+    #=======НАЧАЛО Вернуться в основное меню=======#
+    @bot.message_handler(state=reg_states_admin.in_downloads,
+                         func=lambda message: message.text == 'Вернуться в основное меню')
+    def return_to_menu(message: Message):
+        bot.send_message(message.chat.id,
+                         'Выберите действие',
+                         reply_markup=main_admin_commands())
+        bot.set_state(message.from_user.id, reg_states_admin.in_any_block, message.chat.id)
+    # ======= КОНЕЦ Вернуться в основное меню=======#
+
+
+
     # ========БЛОК ВЫГРУЗКИ ДАННЫХ ОБ АКТИВНЫХ КЛИЕНТАХ===========
     @bot.message_handler(state=reg_states_admin.in_downloads,
                          func=lambda message: message.text == 'Данные активных клиентов')
@@ -122,7 +134,8 @@ def reg_downloads_handlers(bot: TeleBot):
                 schedule_sheet.cell(row=i_row, column=2, value=next_day)
                 for i_lesson in lessons:
                     if i_lesson.day_of_week == i_row - 2:
-                        schedule_sheet.cell(row=i_row, column=i_lesson.lesson_number + 2, value=i_lesson.client.clients_child_name)
+                        client_data = [i_lesson.client.clients_name, i_lesson.client.clients_sirname]
+                        schedule_sheet.cell(row=i_row, column=i_lesson.lesson_number + 2, value=' '.join(client_data))
                 next_day += timedelta(days=1)
 
             schedule_sheet.cell(row=8, column=1, value='Дата понедельника: ')
