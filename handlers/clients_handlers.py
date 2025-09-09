@@ -42,9 +42,9 @@ def reg_clients_handlers(bot):
             bot.send_message(message.chat.id, "У вас нет запланированных занятий", reply_markup=go_to_menu())
             bot.set_state(message.from_user.id, reg_states_client.in_menu, message.chat.id)
         else:
-            output_str = 'Вот ваше расписание:\n\n'
+            output_str = 'Вот ваше расписание🗓️:\n\n'
             for i_les in active_lessons:
-                output_str += str(i_les)
+                output_str += f'{i_les.days_dict.get(i_les.day_of_week, 'Неизвестный день')} - {i_les.lessons_dict.get(i_les.lesson_number, 'Неизвестное время')}\n'
             bot.send_message(message.chat.id,
                              output_str,
                              reply_markup=go_to_menu())
@@ -67,9 +67,9 @@ def reg_clients_handlers(bot):
     def feedback(message: Message):
         if message.text == 'Перейти в основное меню':
             output_txt = 'Доступные команды: \n\n'
-            output_txt += 'Информация - Показать информацию о возможностях бота\n'
-            output_txt += 'Расписание - Посмотреть свое расписание\n'
-            output_txt += 'Отзывы и предложения - Оставить отзыв или предложения\n'
+            output_txt += 'Информация❓ - Показать информацию о возможностях бота\n'
+            output_txt += 'Расписание🗓️ - Посмотреть свое расписание\n'
+            output_txt += 'Отзывы и предложения💾 - Оставить отзыв или предложения\n'
             bot.send_message(message.chat.id, output_txt, reply_markup=main_clients_commands())
             bot.set_state(message.from_user.id, reg_states_client.in_any_block, message.chat.id)
         else:
@@ -77,19 +77,18 @@ def reg_clients_handlers(bot):
             Feedback.create(
                 client=curr_client,
                 text=message.text,
-                feedback_date=datetime.now().date()
+                feedback_date=datetime.now()
             )
             bot.send_message(message.chat.id,
-                             'Спасибо за оставленный комментарий! Мы очень ценим это!',
+                             'Спасибо за оставленный комментарий💔! Мы очень ценим это!',
                              reply_markup=go_to_menu())
             bot.set_state(message.from_user.id, reg_states_client.in_menu, message.chat.id)
             try:
                 curr_feedback = Feedback.get_or_none(Feedback.client == curr_client)
                 date = curr_feedback.feedback_date
-                text = curr_feedback.text
+                text = message.text
                 bot.send_message(admin_id,
                                  f'Оставлен новый отзыв:\n\n'
-                                 f'Дата: {date}\n'
                                  f'Текст: "{text}"\n'
                                  f'Кто оставил: {curr_client.clients_name} {curr_client.clients_sirname}',
                                  reply_markup=go_to_menu())

@@ -92,7 +92,7 @@ class Feedback(BaseModel):
     feedback_id = IntegerField(primary_key=True)
     client = ForeignKeyField(Client, backref='feedback')
     text = CharField(null=False)
-    feedback_date = DateField(null=False)
+    feedback_date = DateTimeField(null=False)
 
     def __str__(self):
         return ('{date}: {client_name} {client_sirname} оставил следующее сообщение:\n{text}').format(

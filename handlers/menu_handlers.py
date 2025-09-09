@@ -18,9 +18,9 @@ def reg_menu_handlers(bot: TeleBot):
     @bot.message_handler(state=reg_states_client.in_menu)
     def show_client_cmd(message: Message):
         output_txt = 'Доступные команды: \n\n'
-        output_txt += 'Информация - Показать информацию о возможностях бота\n'
-        output_txt += 'Расписание - Посмотреть свое расписание\n'
-        output_txt += 'Отзывы и предложения - Оставить отзыв или предложения\n'
+        output_txt += 'Информация❓ - Показать информацию о возможностях бота\n'
+        output_txt += 'Расписание🗓️ - Посмотреть свое расписание\n'
+        output_txt += 'Отзывы и предложения💾 - Оставить отзыв или предложения\n'
 
         bot.send_message(message.chat.id, output_txt, reply_markup=main_clients_commands())
         bot.set_state(message.from_user.id, reg_states_client.in_any_block, message.chat.id)

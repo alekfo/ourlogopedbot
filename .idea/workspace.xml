@@ -4,19 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b5e7868-f73e-4f85-a9bf-b8ab30017f45" name="Changes" comment="add_downloads">
-      <change afterPath="$PROJECT_DIR$/handlers/info_for_admin_handler.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/handlers/mass_mailing_handler.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/handlers/menage_clients.py" afterDir="false" />
+    <list default="true" id="5b5e7868-f73e-4f85-a9bf-b8ab30017f45" name="Changes" comment="last_draft">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DATABASE/look_at_bd.py" beforeDir="false" afterPath="$PROJECT_DIR$/DATABASE/look_at_bd.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DATABASE/peewee_config.py" beforeDir="false" afterPath="$PROJECT_DIR$/DATABASE/peewee_config.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/handlers/clients_handlers.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/clients_handlers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/downloads_handlers.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/downloads_handlers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/handlers/menu_handlers.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/menu_handlers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/schedule_handlers.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/schedule_handlers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/main_keyboards.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/main_keyboards.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/states.py" beforeDir="false" afterPath="$PROJECT_DIR$/states.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -246,7 +239,15 @@
       <option name="project" value="LOCAL" />
       <updated>1756821436203</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="last_draft">
+      <option name="closed" value="true" />
+      <created>1757270332044</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1757270332044</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -267,6 +268,7 @@
     <MESSAGE value="set_schedule" />
     <MESSAGE value="set_schedule_with_flag" />
     <MESSAGE value="add_downloads" />
-    <option name="LAST_COMMIT_MESSAGE" value="add_downloads" />
+    <MESSAGE value="last_draft" />
+    <option name="LAST_COMMIT_MESSAGE" value="last_draft" />
   </component>
 </project>
