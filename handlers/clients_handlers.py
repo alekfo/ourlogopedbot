@@ -95,3 +95,49 @@ def reg_clients_handlers(bot):
             except Exception as e:
                 print('Ошибка отправки админу отзыва:', e)
 # ========КОНЕЦ ОБРАБОТКИ СООБЩЕНИЯ ОБРАТНОЙ СВЯЗИ===========
+
+#=====Обработка подтверждения урока=====
+    @bot.callback_query_handler(
+        func=lambda callback_query: (
+            callback_query.data == "confirmed"
+        )
+    )
+    def confirmed(callback_query):
+        # Удаляем клавиатуру.
+        bot.edit_message_reply_markup(
+            callback_query.from_user.id, callback_query.message.message_id
+        )
+        # Отправляем сообщение пользователю.
+        bot.send_message(
+            callback_query.from_user.id,
+            "Ждем Вас к назначенному часу!",
+        )
+        curr_client = Client.get_or_none(Client.clients_id == callback_query.from_user.id)
+        message_to_admin = f'{curr_client.clients_name} {curr_client.clients_sirname} подтвердил ближайшую запись!'
+        bot.send_message(
+            admin_id,
+            message_to_admin,
+        )
+
+        @bot.callback_query_handler(
+            func=lambda callback_query: (
+                    callback_query.data == "canceled"
+            )
+        )
+        def canceled(callback_query):
+            # Удаляем клавиатуру.
+            bot.edit_message_reply_markup(
+                callback_query.from_user.id, callback_query.message.message_id
+            )
+            # Отправляем сообщение пользователю.
+            bot.send_message(
+                callback_query.from_user.id,
+                "Спасибо, что уведомили! Свяжитесь с учителем, чтобы назначить дату нового занятия!",
+            )
+            curr_client = Client.get_or_none(Client.clients_id == callback_query.from_user.id)
+            message_to_admin = f'{curr_client.clients_name} {curr_client.clients_sirname} ОТМЕНИЛ ближайшую запись!'
+            bot.send_message(
+                admin_id,
+                message_to_admin,
+            )
+#=====Обработка подтверждения урока=====

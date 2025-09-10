@@ -1,4 +1,6 @@
 from telebot.types import ReplyKeyboardMarkup, KeyboardButton, ReplyKeyboardRemove, InlineKeyboardButton, InlineKeyboardMarkup
+from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
+
 
 def get_contact():
     # Создаём объекты кнопок.
@@ -84,5 +86,15 @@ def downloads_type():
 
     for button_text in buttons:
         keyboard.add(KeyboardButton(text=button_text))
+    return keyboard
+
+def confirmation_markup():
+    # Создаём объекты кнопок.
+    button_1 = InlineKeyboardButton(text="Подтвержаю", callback_data="confirmed")
+    button_2 = InlineKeyboardButton(text="Отменить занятие", callback_data="canceled")
+
+    # Создаём объект клавиатуры, добавляя в него кнопки.
+    keyboard = InlineKeyboardMarkup()
+    keyboard.add(button_1, button_2)
     return keyboard
 

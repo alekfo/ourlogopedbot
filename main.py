@@ -2,6 +2,7 @@ import telebot
 from telebot.storage import StateMemoryStorage
 from telebot import custom_filters
 from config import BOT_TOKEN
+import threading
 
 from handlers.start_handlers import reg_start_handlers
 from handlers.menu_handlers import reg_menu_handlers
@@ -14,6 +15,7 @@ from handlers.info_for_admin_handler import reg_info_about_clients
 from handlers.menage_clients import reg_menage_clients
 
 from DATABASE.peewee_config import create_models
+from utils.notifications import check_upcoming_lessons
 
 state_storage = StateMemoryStorage()
 
@@ -42,6 +44,14 @@ def main():
     reg_clients_handlers(bot)
     reg_registration_handlers(bot)
     reg_start_handlers(bot)
+
+    # Запускаем поток для проверки уведомлений
+    notification_thread = threading.Thread(
+        target=check_upcoming_lessons,
+        args=(bot,),
+        daemon=True  # Поток завершится при завершении основного потока
+    )
+    notification_thread.start()
 
     bot.infinity_polling()
 

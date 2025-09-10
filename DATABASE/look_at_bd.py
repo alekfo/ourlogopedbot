@@ -12,8 +12,8 @@ from peewee_config import db, Client, Feedback
 #               f'ИМЯ ребенка клиента: {i_client.clients_child_name}\n'
 #               f'ДР ребенка клиента: {i_client.clients_child_birthday}\n')
 
-with db:
-    feedback_list = Feedback.select()
-    print(f'Имеющиеся отзывы и предложения:\n')
-    for i_index, i_feed in enumerate(feedback_list):
-        print(i_feed)
+# with db:
+#     feedback_list = Feedback.select()
+#     print(f'Имеющиеся отзывы и предложения:\n')
+#     for i_index, i_feed in enumerate(feedback_list):
+#         print(i_feed)
