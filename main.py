@@ -8,7 +8,8 @@ from handlers.start_handlers import reg_start_handlers
 from handlers.menu_handlers import reg_menu_handlers
 from handlers.clients_handlers import reg_clients_handlers
 from handlers.registration_handlers import reg_registration_handlers
-from handlers.schedule_handlers import reg_schedule_handlers
+from handlers.schedule.schedule_handlers import reg_schedule_handlers
+from handlers.schedule.menage_schedule import reg_menage_schedule_handlers
 from handlers.downloads_handlers import reg_downloads_handlers
 from handlers.mass_mailing_handler import reg_mass_mailing_handler
 from handlers.info_for_admin_handler import reg_info_about_clients
@@ -37,6 +38,7 @@ def main():
     reg_menu_handlers(bot)
     reg_info_about_clients(bot)
     reg_schedule_handlers(bot)
+    reg_menage_schedule_handlers(bot)
     reg_menage_clients(bot)
     reg_downloads_handlers(bot)
     reg_mass_mailing_handler(bot)

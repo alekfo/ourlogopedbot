@@ -23,3 +23,8 @@ class reg_states_admin(StatesGroup):
     in_downloads = State()
     in_downloads_schedule = State()
     mass_mailing_state = State()
+    choisen_action = State()
+    get_weekday = State()
+    get_lesson_number = State()
+    delete_confirmation = State()
+    create_lesson = State()

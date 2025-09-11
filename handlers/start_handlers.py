@@ -23,7 +23,7 @@ def reg_start_handlers(bot: TeleBot):
         try:
             client = Client.get(Client.clients_id == message.from_user.id)
             bot.send_message(message.chat.id,
-                             f'Рад снова видеть Вас, {client.clients_name}!\n'
+                             f'Рад снова видеть Вас, {client.clients_name}!👋\n'
                                               f'Для перехода в меню нажми на кнопку ниже',
                              reply_markup=go_to_menu()
                              )
@@ -31,13 +31,13 @@ def reg_start_handlers(bot: TeleBot):
         except DoesNotExist:
             if message.from_user.id != admin_id:
                 bot.send_message(message.chat.id,
-                                 'Добро пожаловать в чат-бот центра "ЛОГОПЕДиЯ". '
+                                 'Добро пожаловать в чат-бот центра "ЛОГОПЕДиЯ"!🦄👨‍👩‍👧‍👦\n'
                                                   'Чтобы продолжить - пройдите регистрацию по кнопке ниже',
                                  reply_markup=start_registration())
                 bot.set_state(message.from_user.id, reg_states_client.start_registration, message.chat.id)
             else:
                 bot.send_message(message.chat.id,
-                                 'Вы являетесь администратором чата, нажмите на кнопку ниже для прохода в меню',
+                                 'Вы являетесь администратором🥷 чата, нажмите на кнопку ниже для прохода в меню',
                                  reply_markup=go_to_menu())
                 bot.set_state(message.from_user.id, reg_states_admin.admin_menu, message.chat.id)
 

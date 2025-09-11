@@ -134,7 +134,6 @@ def reg_schedule_handlers(bot: TeleBot):
     @bot.message_handler(state=reg_states_admin.show_schedule)
     def show_schedule(message: Message):
         check_format_list = message.text.split('.')
-        print(check_format_list)
         try:
             if len(check_format_list) == 3 and 0 < int(check_format_list[0]) <= 31 and 0 < int(check_format_list[1]) <= 12 and int(check_format_list[2]) > 0:
                 formated_data = datetime.strptime(message.text, "%d.%m.%Y").date()
@@ -166,14 +165,3 @@ def reg_schedule_handlers(bot: TeleBot):
         except Exception as e:
             bot.send_message(message.chat.id,f'{e} - Введите данные формата DD.MM.YYYY')
 # ========КОНЕЦ БЛОКА ПОКАЗ РАСПИСАНИЯ===========
-
-# ========БЛОК ИЗМЕНЕНИЯ РАСПИСАНИЯ>===========
-    @bot.message_handler(state=reg_states_admin.in_schedule,
-                         func=lambda message: message.text == 'Изменить расписание')
-    def show_schedule(message: Message):
-        bot.send_message(message.chat.id,
-                         'Блок изменения расписания в разработке. Для выхода в главное меню '
-                         'нажмите на кнопку ниже',
-                         reply_markup=go_to_menu())
-        bot.set_state(message.from_user.id, reg_states_admin.admin_menu, message.chat.id)
-# ========КОНЕЦ БЛОКА ИЗМЕНЕНИЯ РАСПИСАНИЯ===========

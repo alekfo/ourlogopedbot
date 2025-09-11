@@ -4,9 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b5e7868-f73e-4f85-a9bf-b8ab30017f45" name="Changes" comment="Notifications">
+    <list default="true" id="5b5e7868-f73e-4f85-a9bf-b8ab30017f45" name="Changes" comment="change_schedule_output">
+      <change afterPath="$PROJECT_DIR$/handlers/schedule/menage_schedule.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/schedule_handlers.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/schedule_handlers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/clients_handlers.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/clients_handlers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/schedule_handlers.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/schedule/schedule_handlers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/start_handlers.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/start_handlers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/keyboards/main_keyboards.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/main_keyboards.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/states.py" beforeDir="false" afterPath="$PROJECT_DIR$/states.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/notifications.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/notifications.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +59,9 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\alekf\OneDrive\Desktop\Python\ourlogopedbot" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\alekf\OneDrive\Desktop\Python\ourlogopedbot\handlers\schedule" />
     </key>
   </component>
   <component name="RunManager" selected="Python.main">
@@ -168,8 +178,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.main" />
-        <item itemvalue="Python.to_test" />
         <item itemvalue="Python.notifications" />
+        <item itemvalue="Python.to_test" />
         <item itemvalue="Python.look_at_bd" />
         <item itemvalue="Python.to_delete_data" />
       </list>
@@ -262,7 +272,15 @@
       <option name="project" value="LOCAL" />
       <updated>1757519297262</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="change_schedule_output">
+      <option name="closed" value="true" />
+      <created>1757573868740</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1757573868740</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -286,6 +304,7 @@
     <MESSAGE value="last_draft" />
     <MESSAGE value="emodzy" />
     <MESSAGE value="Notifications" />
-    <option name="LAST_COMMIT_MESSAGE" value="Notifications" />
+    <MESSAGE value="change_schedule_output" />
+    <option name="LAST_COMMIT_MESSAGE" value="change_schedule_output" />
   </component>
 </project>

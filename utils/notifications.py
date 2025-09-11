@@ -8,7 +8,7 @@ def check_upcoming_lessons(bot: TeleBot):
     while True:
         try:
             now = datetime.now()
-            target_time = now + timedelta(hours=8)
+            target_time = now + timedelta(hours=1)
             formated_target_time = target_time.time().strftime('%H:%M')
 
             upcoming_lessons = Lesson.select().where(
@@ -41,7 +41,7 @@ def check_upcoming_lessons(bot: TeleBot):
                     except Exception as e:
                         print(f"Ошибка отправки напоминания: {e}")
 
-            time.sleep(1800)
+            time.sleep(60)
 
         except Exception as e:
             print(f"Ошибка в функции проверки уроков: {e}")
