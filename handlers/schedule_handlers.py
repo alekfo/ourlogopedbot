@@ -96,12 +96,27 @@ def reg_schedule_handlers(bot: TeleBot):
         except Exception as e:
             bot.send_message(message.chat.id, f"❌ Ошибка при обработке файла: {str(e)}")
         else:
-            output_str = 'Данные успешно добавлены\nРасписание текущей (curr_week) недели:\n'
+            output_str = 'Данные успешно добавлены✅ \nРасписание текущей недели:\n'
             lessons_list = Lesson.select().where(Lesson.weekly_schedule == curr_week)
-            for i_lesson in lessons_list:
-                output_str += str(i_lesson)
+            lesson_dict = {}
+            for i_less in lessons_list:
+                if i_less.days_dict.get(i_less.day_of_week) in lesson_dict:
+                    lesson_dict[i_less.days_dict.get(i_less.day_of_week)].append([
+                        i_less.lessons_dict.get(i_less.lesson_number),
+                        i_less.client.clients_name,
+                        i_less.client.clients_sirname])
+                else:
+                    lesson_dict[i_less.days_dict.get(i_less.day_of_week)] = []
+                    lesson_dict[i_less.days_dict.get(i_less.day_of_week)].append([
+                        i_less.lessons_dict.get(i_less.lesson_number),
+                        i_less.client.clients_name,
+                        i_less.client.clients_sirname])
+            for i_day, lessons in lesson_dict.items():
+                output_str += '\n' + i_day + '\n'
+                for i_less in lessons:
+                    output_str += f'{i_less[0]} - {i_less[1]} {i_less[2]}\n'
             bot.send_message(message.chat.id, output_str, reply_markup=go_to_menu())
-            bot.set_state(message.from_user.id, reg_states_admin.   admin_menu, message.chat.id)
+            bot.set_state(message.from_user.id, reg_states_admin.admin_menu, message.chat.id)
 # ========КОНЕЦ ОБРАБОТКИ ФАЙЛА===========
 
 # ========ЗАПРОС ДАТЫ НА ПОКАЗ РАСПИСАНИЯ===========
@@ -126,8 +141,23 @@ def reg_schedule_handlers(bot: TeleBot):
                 curr_week = Week.get_or_none(Week.monday_date == formated_data)
                 lesson_list = curr_week.lessons
                 output_str = f'Расписание текущей ({curr_week}) недели:\n'
-                for i_lesson in lesson_list:
-                    output_str += str(i_lesson)
+                lesson_dict = {}
+                for i_less in lesson_list:
+                    if i_less.days_dict.get(i_less.day_of_week) in lesson_dict:
+                        lesson_dict[i_less.days_dict.get(i_less.day_of_week)].append([
+                            i_less.lessons_dict.get(i_less.lesson_number),
+                            i_less.client.clients_name,
+                            i_less.client.clients_sirname])
+                    else:
+                        lesson_dict[i_less.days_dict.get(i_less.day_of_week)] = []
+                        lesson_dict[i_less.days_dict.get(i_less.day_of_week)].append([
+                            i_less.lessons_dict.get(i_less.lesson_number),
+                            i_less.client.clients_name,
+                            i_less.client.clients_sirname])
+                for i_day, lessons in lesson_dict.items():
+                    output_str += '\n' + i_day + '\n'
+                    for i_less in lessons:
+                        output_str += f'{i_less[0]} - {i_less[1]} {i_less[2]}\n'
                 bot.send_message(message.chat.id,
                                  output_str, reply_markup=go_to_menu())
                 bot.set_state(message.from_user.id, reg_states_admin.admin_menu, message.chat.id)
