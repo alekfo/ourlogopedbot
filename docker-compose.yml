@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  ourlogoped-bot: # ← Имя сервиса внутри compose (может быть любым)
+    build: . # ← "Собери образ из Dockerfile в текущей папке"
+    container_name: ourlogoped # ← "Назови контейнер именно 'sadr-bot'"
+    env_file: .env  # ← "Возьми переменные окружения из файла .env"
+    volumes:
+      # КРИТИЧЕСКИ ВАЖНО: монтируем вашу папку в контейнер - т.е все что появляется в /app/data автоматически появляется на хосте (локальном компе) по указанному в начале адресу
+      - "C:/Users/alekf/OneDrive/Desktop/Python/ourlogopedbot/DATABASE:/app/data"
+    restart: unless-stopped # ← "Перезапускай контейнер при падении, если я не остановил его вручную"

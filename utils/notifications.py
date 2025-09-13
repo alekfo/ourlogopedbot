@@ -8,7 +8,7 @@ def check_upcoming_lessons(bot: TeleBot):
     while True:
         try:
             now = datetime.now()
-            target_time = now + timedelta(hours=1)
+            target_time = now + timedelta(hours=5)
             formated_target_time = target_time.time().strftime('%H:%M')
 
             upcoming_lessons = Lesson.select().where(

@@ -4,15 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b5e7868-f73e-4f85-a9bf-b8ab30017f45" name="Changes" comment="change_schedule_output">
-      <change afterPath="$PROJECT_DIR$/handlers/schedule/menage_schedule.py" afterDir="false" />
+    <list default="true" id="5b5e7868-f73e-4f85-a9bf-b8ab30017f45" name="Changes" comment="menage_lessons_draft">
+      <change afterPath="$PROJECT_DIR$/.dockerignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/handlers/clients_handlers.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/clients_handlers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/schedule_handlers.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/schedule/schedule_handlers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/start_handlers.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/start_handlers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/main_keyboards.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/main_keyboards.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/states.py" beforeDir="false" afterPath="$PROJECT_DIR$/states.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/notifications.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/notifications.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -280,7 +277,15 @@
       <option name="project" value="LOCAL" />
       <updated>1757573868740</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="menage_lessons_draft">
+      <option name="closed" value="true" />
+      <created>1757617075465</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1757617075465</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -305,6 +310,7 @@
     <MESSAGE value="emodzy" />
     <MESSAGE value="Notifications" />
     <MESSAGE value="change_schedule_output" />
-    <option name="LAST_COMMIT_MESSAGE" value="change_schedule_output" />
+    <MESSAGE value="menage_lessons_draft" />
+    <option name="LAST_COMMIT_MESSAGE" value="menage_lessons_draft" />
   </component>
 </project>

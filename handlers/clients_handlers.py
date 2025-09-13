@@ -49,7 +49,7 @@ def reg_clients_handlers(bot):
         else:
             output_str = 'Вот ваше расписание🗓️:\n\n'
             for i_les in active_lessons:
-                output_str += f'{i_les.days_dict.get(i_les.day_of_week, 'Неизвестный день')} - {i_les.lessons_dict.get(i_les.lesson_number, 'Неизвестное время')}\n'
+                output_str += f'{i_les.days_dict.get(i_les.day_of_week, "Неизвестный день")} - {i_les.lessons_dict.get(i_les.lesson_number, "Неизвестное время")}\n'
             bot.send_message(message.chat.id,
                              output_str,
                              reply_markup=go_to_menu())
