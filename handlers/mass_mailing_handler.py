@@ -25,7 +25,7 @@ def reg_mass_mailing_handler(bot: TeleBot):
                          func=lambda message: message.text == 'Сделать рассылку')
     def get_message(message: Message):
         bot.send_message(message.chat.id,
-                        'Напишите сообщение. ПРЕДУПРЕЖДЕНИЕ: данное сообщение отправится всем зарегистрированным клиентам\n'
+                        'Напишите сообщение\nПРЕДУПРЕЖДЕНИЕ: данное сообщение отправится всем зарегистрированным клиентам\n'
                         'Для отмены нажмите на кнопку "Перейти в основное меню"',
                         reply_markup=go_to_menu())
         bot.set_state(message.from_user.id, reg_states_admin.mass_mailing_state, message.chat.id)

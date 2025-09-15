@@ -32,8 +32,10 @@ def reg_schedule_handlers(bot: TeleBot):
 # ========КОНЕЦ БЛОКА ВЫБОРА ДЕЙСТВИЯ НАД РАСПИСАНИЕМ===========
 
 #====НАЧАЛО БЛОКА ОТМЕНЫ=++===
-    @bot.message_handler(state=reg_states_admin.in_schedule,
-                        func=lambda message: message.text == 'Вернуться в основное меню')
+    @bot.message_handler(state= [reg_states_admin.in_schedule,
+                                 reg_states_admin.process_file,
+                                 reg_states_admin.show_schedule],
+                        func=lambda message: message.text == 'Перейти в основное меню')
     def return_to_menu(message: Message):
         bot.send_message(message.chat.id,
                          'Выберите действие',
@@ -49,8 +51,9 @@ def reg_schedule_handlers(bot: TeleBot):
         bot.send_message(message.chat.id,
                          'Отправьте файл формата .xlsx\n'
                          'В строках файла должны содержаться дни недели (кроме воскресенья),\n'
-                         'в столбцах - разбивка по урокам',
-                         reply_markup=ReplyKeyboardRemove())
+                         'в столбцах - разбивка по урокам\n\n'
+                         'Для избежания ошибок при загрузке рекомендуется ознакомиться с образцом загрузочного файла',
+                         reply_markup=go_to_menu())
         bot.set_state(message.from_user.id, reg_states_admin.process_file, message.chat.id)
 # ========КОНЕЦ БЛОКА ДОБАВЛЕНИЯ РАСПИСАНИЯ===========
 
@@ -58,7 +61,6 @@ def reg_schedule_handlers(bot: TeleBot):
     @bot.message_handler(content_types=['document'], state=reg_states_admin.process_file)
     def file_procced(message: Message):
         try:
-
             # Получаем информацию о файле
             file_info = bot.get_file(message.document.file_id)
             downloaded_file = bot.download_file(file_info.file_path)
@@ -94,7 +96,8 @@ def reg_schedule_handlers(bot: TeleBot):
                             raise TypeError(f'В расписание добавлен не зарегистрированный пользователь - {cell}. '
                                             'Проверьте файл')
         except Exception as e:
-            bot.send_message(message.chat.id, f"❌ Ошибка при обработке файла: {str(e)}")
+            bot.send_message(message.chat.id, f"❌ Ошибка при обработке файла: {str(e)}", reply_markup=go_to_menu())
+            bot.set_state(message.from_user.id, reg_states_admin.admin_menu, message.chat.id)
         else:
             output_str = 'Данные успешно добавлены✅ \nРасписание текущей недели:\n'
             lessons_list = Lesson.select().where(Lesson.weekly_schedule == curr_week)
@@ -126,7 +129,7 @@ def reg_schedule_handlers(bot: TeleBot):
         bot.send_message(message.chat.id,
                          'Пришлите дату понедельника недели, расписание которой хотите посмотреть\n'
                          'Формат даты: DD.MM.YYYY',
-                         reply_markup=ReplyKeyboardRemove())
+                         reply_markup=go_to_menu())
         bot.set_state(message.from_user.id, reg_states_admin.show_schedule, message.chat.id)
 # ========КОНЕЦ БЛОКА ЗАПРОСА ДАТЫ ПОКАЗАТЬ РАСПИСАНИЕ===========
 

@@ -31,8 +31,9 @@ def reg_downloads_handlers(bot: TeleBot):
     # ========БЛОК ВЫБОРА ТИПА ВЫГРУЗКИ===========
 
     #=======НАЧАЛО Вернуться в основное меню=======#
-    @bot.message_handler(state=reg_states_admin.in_downloads,
-                         func=lambda message: message.text == 'Вернуться в основное меню')
+    @bot.message_handler(state=[reg_states_admin.in_downloads,
+                                reg_states_admin.in_downloads_schedule],
+                         func=lambda message: message.text == 'Перейти в основное меню')
     def return_to_menu(message: Message):
         bot.send_message(message.chat.id,
                          'Выберите действие',
@@ -83,7 +84,9 @@ def reg_downloads_handlers(bot: TeleBot):
 
             bot.set_state(message.from_user.id, reg_states_admin.admin_menu, message.chat.id)
         except Exception as e:
-            bot.send_message(message.chat.id, f"❌ Ошибка при выгрузке: {str(e)}")
+            bot.send_message(message.chat.id, f"❌ Ошибка при выгрузке: {str(e)}\n"
+                                              f"Для возврата в меню воспользуйтесь кнопкой ниже", reply_markup=go_to_menu())
+            bot.set_state(message.from_user.id, reg_states_admin.admin_menu, message.chat.id)
     # ========КОНЕЦ БЛОКА ВЫГРУЗКИ ДАННЫХ ОБ АКТИВНЫХ КЛИЕНТАХ===========
 
     # ========БЛОК ПОЛУЧЕНИЯ ДАТЫ ПОНЕДЕЛЬНИКА===========
@@ -102,7 +105,9 @@ def reg_downloads_handlers(bot: TeleBot):
         try:
             #НЕОБХОДИМО ДОБАВИТЬ ПРОВЕРКУ ФОРМАТА ДАТЫ
             input_date = datetime.strptime(message.text, '%d.%m.%Y').date()
-            week = Week.get(Week.monday_date == input_date)
+            week = Week.get_or_none(Week.monday_date == input_date)
+            if week is None:
+                raise DoesNotExist('Такой недели нет в базе данных.')
             next_day = week.monday_date
             lessons = week.lessons
 
@@ -153,5 +158,7 @@ def reg_downloads_handlers(bot: TeleBot):
 
             bot.set_state(message.from_user.id, reg_states_admin.admin_menu, message.chat.id)
         except Exception as e:
-            bot.send_message(message.chat.id, f"❌ Ошибка при выгрузке: {str(e)}")
+            bot.send_message(message.chat.id, f"❌ Ошибка при выгрузке: {str(e)}\nВведите корректную дату. Формат - DD.MM.YYYY\n"
+                                              f"\n\nДля возврата в меню воспользуйтесь кнопкой ниже",
+                             reply_markup=go_to_menu())
     # ========БЛОК ВЫГРУЗКИ ДАННЫХ О РАСПИСАНИИ===========
