@@ -38,7 +38,7 @@ def reg_registration_handlers(bot: TeleBot):
             bot.send_message(message.chat.id,
                              'Спасибо, записал! Теперь мне нужен Ваш номер телефона.\n'
                              'Для отправки номера телефона воспользуйтесь кнопкой ниже',
-                             reply_markup=get_contact()
+                             reply_markup=get_contact(), parse_mode='HTML'
                              )
             bot.set_state(message.from_user.id, reg_states_client.getting_number, message.chat.id)
         else:
@@ -61,7 +61,7 @@ def reg_registration_handlers(bot: TeleBot):
     def wrong_number(message: Message):
         bot.send_message(message.chat.id,
                          'Для отправки номера телефона необходимо воспользоваться кнопкой ниже',
-                         reply_markup=get_contact()
+                         reply_markup=get_contact(), parse_mode='HTML'
                          )
 
     @bot.message_handler(state=reg_states_client.getting_child_name)
@@ -95,7 +95,7 @@ def reg_registration_handlers(bot: TeleBot):
             bot.send_message(message.chat.id,
                              'Отлично! Все необходимые данные получены!\n'
                              'Для перехода в меню нажми на кнопку ниже',
-                             reply_markup=go_to_menu()
+                             reply_markup=go_to_menu(), parse_mode='HTML'
                              )
             bot.set_state(message.from_user.id, reg_states_client.in_menu, message.chat.id)
         else:

@@ -22,12 +22,12 @@ from keyboards.main_keyboards import (
 def reg_mass_mailing_handler(bot: TeleBot):
     # ========БЛОК ЗАПРОСА СООБЩЕНИЯ ДЛЯ РАССЫЛКИ===========
     @bot.message_handler(state=reg_states_admin.in_any_block,
-                         func=lambda message: message.text == 'Сделать рассылку')
+                         func=lambda message: 'Сделать рассылку' in message.text)
     def get_message(message: Message):
         bot.send_message(message.chat.id,
                         'Напишите сообщение\nПРЕДУПРЕЖДЕНИЕ: данное сообщение отправится всем зарегистрированным клиентам\n'
                         'Для отмены нажмите на кнопку "Перейти в основное меню"',
-                        reply_markup=go_to_menu())
+                        reply_markup=go_to_menu(), parse_mode='HTML')
         bot.set_state(message.from_user.id, reg_states_admin.mass_mailing_state, message.chat.id)
 
     # ========КОНЕЦ БЛОКА ЗАПРОСА СООБЩЕНИЯ ДЛЯ РАССЫЛКИ===========
@@ -36,10 +36,10 @@ def reg_mass_mailing_handler(bot: TeleBot):
     #====БЛОК РАССЫЛКИ====
     @bot.message_handler(state=reg_states_admin.mass_mailing_state)
     def mass_mailing(message: Message):
-        if message.text == 'Перейти в основное меню':
+        if 'Перейти в основное меню' in message.text:
             bot.send_message(message.chat.id,
                              'Выберите действие',
-                             reply_markup=main_admin_commands())
+                             reply_markup=main_admin_commands(), parse_mode='HTML')
             bot.set_state(message.from_user.id, reg_states_admin.in_any_block, message.chat.id)
         else:
             clients = Client.select()
@@ -48,7 +48,7 @@ def reg_mass_mailing_handler(bot: TeleBot):
                                  message.text)
             bot.send_message(message.chat.id,
                              'Сообщение отправлено всем пользователям\nПри ошибочной отправке рекомендуется обратиться к клиентам лично.',
-                             reply_markup=go_to_menu())
+                             reply_markup=go_to_menu(), parse_mode='HTML')
             bot.set_state(message.from_user.id, reg_states_admin.admin_menu, message.chat.id)
 
     # ====КОНЕЦ БЛОКА РАССЫЛКИ====

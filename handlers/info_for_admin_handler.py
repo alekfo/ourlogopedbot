@@ -22,7 +22,7 @@ def reg_info_about_clients(bot: TeleBot):
 
     # ========БЛОК ИНФОРМАЦИИ О КЛИЕНТАХ===========
     @bot.message_handler(state=reg_states_admin.in_any_block,
-                         func=lambda message: message.text == 'ИНФО о клиентах')
+                         func=lambda message: 'ИНФО о клиентах' in message.text)
     def clients_info(message: Message):
         output_info = ('Вот вся информация об активных клиентах:\n\n')
         clients = Client.select()
@@ -30,7 +30,7 @@ def reg_info_about_clients(bot: TeleBot):
             output_info += str(i_client)
         bot.send_message(message.chat.id,
                         output_info,
-                        reply_markup=go_to_menu())
+                        reply_markup=go_to_menu(), parse_mode='HTML')
         bot.set_state(message.from_user.id, reg_states_admin.admin_menu, message.chat.id)
 
     # ========КОНЕЦ БЛОКА ИНФОРМАЦИИ О КЛИЕНТАХ===========

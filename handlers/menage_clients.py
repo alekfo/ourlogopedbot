@@ -22,7 +22,7 @@ def reg_menage_clients(bot: TeleBot):
 
     # ========БЛОК ИНФОРМАЦИИ О КЛИЕНТАХ===========
     @bot.message_handler(state=reg_states_admin.in_any_block,
-                         func=lambda message: message.text == 'Управление клиентами')
+                         func=lambda message: 'Управление клиентами' in message.text)
     def clients_info(message: Message):
         bot.send_message(message.chat.id,
                         'Раздел в разработке.\nСкоро тут можно будет удалять и добавлять клиентов',

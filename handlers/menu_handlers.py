@@ -22,13 +22,13 @@ def reg_menu_handlers(bot: TeleBot):
         output_txt += 'Расписание🗓️ - Посмотреть свое расписание\n'
         output_txt += 'Отзывы и предложения💾 - Оставить отзыв или предложения\n'
 
-        bot.send_message(message.chat.id, output_txt, reply_markup=main_clients_commands())
+        bot.send_message(message.chat.id, output_txt, reply_markup=main_clients_commands(), parse_mode='HTML')
         bot.set_state(message.from_user.id, reg_states_client.in_any_block, message.chat.id)
     # ========КОНЕЦ БЛОКА ОСНОВНОГО МЕНЮ КЛИЕНТА=========
 
     # ========НАЧАЛО БЛОКА МЕНЮ АДМИНА=========
     @bot.message_handler(state=reg_states_admin.admin_menu)
     def admin_menu(message: Message):
-        bot.send_message(message.chat.id, 'Выберите действие', reply_markup=main_admin_commands())
+        bot.send_message(message.chat.id, 'Выберите действие', reply_markup=main_admin_commands(), parse_mode='HTML')
         bot.set_state(message.from_user.id, reg_states_admin.in_any_block, message.chat.id)
 # ========КОНЕЦ БЛОКА МЕНЮ АДМИНА=========

@@ -22,22 +22,22 @@ from keyboards.main_keyboards import (
 def reg_downloads_handlers(bot: TeleBot):
     # ========БЛОК ВЫБОРА ТИПА ВЫГРУЗКИ===========
     @bot.message_handler(state=reg_states_admin.in_any_block,
-                         func=lambda message: message.text == 'Выгрузка данных')
+                         func=lambda message: 'Выгрузка данных' in message.text)
     def downloads_actions(message: Message):
         bot.send_message(message.chat.id,
                          'Выберите тип выгрузки',
-                         reply_markup=downloads_type())
+                         reply_markup=downloads_type(), parse_mode='HTML')
         bot.set_state(message.from_user.id, reg_states_admin.in_downloads, message.chat.id)
     # ========БЛОК ВЫБОРА ТИПА ВЫГРУЗКИ===========
 
     #=======НАЧАЛО Вернуться в основное меню=======#
     @bot.message_handler(state=[reg_states_admin.in_downloads,
                                 reg_states_admin.in_downloads_schedule],
-                         func=lambda message: message.text == 'Перейти в основное меню')
+                         func=lambda message: 'Перейти в основное меню' in message.text)
     def return_to_menu(message: Message):
         bot.send_message(message.chat.id,
                          'Выберите действие',
-                         reply_markup=main_admin_commands())
+                         reply_markup=main_admin_commands(), parse_mode='HTML')
         bot.set_state(message.from_user.id, reg_states_admin.in_any_block, message.chat.id)
     # ======= КОНЕЦ Вернуться в основное меню=======#
 
@@ -45,7 +45,7 @@ def reg_downloads_handlers(bot: TeleBot):
 
     # ========БЛОК ВЫГРУЗКИ ДАННЫХ ОБ АКТИВНЫХ КЛИЕНТАХ===========
     @bot.message_handler(state=reg_states_admin.in_downloads,
-                         func=lambda message: message.text == 'Данные активных клиентов')
+                         func=lambda message: 'Данные активных клиентов' in message.text)
     def downloads_clients(message: Message):
         try:
             clients_data = Client.select()
@@ -80,22 +80,22 @@ def reg_downloads_handlers(bot: TeleBot):
                               document=excel_file,
                               visible_file_name='output_data_clients.xlsx',
                               caption='В файле "output_data_clients.xlsx" выгрузка из базы данных по активным клиентам',
-                              reply_markup=go_to_menu())
+                              reply_markup=go_to_menu(), parse_mode='HTML')
 
             bot.set_state(message.from_user.id, reg_states_admin.admin_menu, message.chat.id)
         except Exception as e:
             bot.send_message(message.chat.id, f"❌ Ошибка при выгрузке: {str(e)}\n"
-                                              f"Для возврата в меню воспользуйтесь кнопкой ниже", reply_markup=go_to_menu())
+                                              f"Для возврата в меню воспользуйтесь кнопкой ниже", reply_markup=go_to_menu(), parse_mode='HTML')
             bot.set_state(message.from_user.id, reg_states_admin.admin_menu, message.chat.id)
     # ========КОНЕЦ БЛОКА ВЫГРУЗКИ ДАННЫХ ОБ АКТИВНЫХ КЛИЕНТАХ===========
 
     # ========БЛОК ПОЛУЧЕНИЯ ДАТЫ ПОНЕДЕЛЬНИКА===========
     @bot.message_handler(state=reg_states_admin.in_downloads,
-                         func=lambda message: message.text == 'Расписания')
+                         func=lambda message: 'Расписания' in message.text)
     def downloads_actions(message: Message):
         bot.send_message(message.chat.id,
                          'Пришлите дату понедельника недели для выгрузки. Формат - DD.MM.YYYY',
-                         reply_markup=ReplyKeyboardRemove())
+                         reply_markup=ReplyKeyboardRemove(), parse_mode='HTML')
         bot.set_state(message.from_user.id, reg_states_admin.in_downloads_schedule, message.chat.id)
     # ========КОНЕЦ БЛОКА ПОЛУЧЕНИЯ ДАТЫ ПОНЕДЕЛЬНИКА===========
 
@@ -154,11 +154,20 @@ def reg_downloads_handlers(bot: TeleBot):
                               document=excel_file,
                               visible_file_name='output_data_schedule.xlsx',
                               caption=f'В файле "output_data_schedule.xlsx" вся выгрузка из базы данных за выбранную ({message.text}) неделю',
-                              reply_markup=go_to_menu())
+                              reply_markup=go_to_menu(), parse_mode='HTML')
 
             bot.set_state(message.from_user.id, reg_states_admin.admin_menu, message.chat.id)
         except Exception as e:
             bot.send_message(message.chat.id, f"❌ Ошибка при выгрузке: {str(e)}\nВведите корректную дату. Формат - DD.MM.YYYY\n"
                                               f"\n\nДля возврата в меню воспользуйтесь кнопкой ниже",
-                             reply_markup=go_to_menu())
+                             reply_markup=go_to_menu(), parse_mode='HTML')
     # ========БЛОК ВЫГРУЗКИ ДАННЫХ О РАСПИСАНИИ===========
+
+    #ARCHIVE
+    @bot.message_handler(state=reg_states_admin.in_downloads,
+                         func=lambda message: 'Архивные данные' in message.text)
+    def downloads_actions(message: Message):
+        bot.send_message(message.chat.id,
+                         'IN CONSTRACTION! PLS, RETURN TO MENU',
+                         reply_markup=go_to_menu(), parse_mode='HTML')
+        bot.set_state(message.from_user.id, reg_states_admin.admin_menu, message.chat.id)

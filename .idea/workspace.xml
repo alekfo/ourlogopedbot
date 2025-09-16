@@ -5,12 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5b5e7868-f73e-4f85-a9bf-b8ab30017f45" name="Changes" comment="for_docker">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/ourlogopedbot.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ourlogopedbot.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/clients_handlers.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/clients_handlers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/handlers/downloads_handlers.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/downloads_handlers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/info_for_admin_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/info_for_admin_handler.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/handlers/mass_mailing_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/mass_mailing_handler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/menage_clients.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/menage_clients.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/menu_handlers.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/menu_handlers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/registration_handlers.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/registration_handlers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/handlers/schedule/menage_schedule.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/schedule/menage_schedule.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/handlers/schedule/schedule_handlers.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/schedule/schedule_handlers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/start_handlers.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/start_handlers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/keyboards/main_keyboards.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/main_keyboards.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,14 +57,16 @@
     &quot;Python.вапывап.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/alekf/OneDrive/Desktop/Python/ourlogopedbot&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+    &quot;last_opened_file_path&quot;: &quot;/home/vboxuser/PycharmProjects/ourlogopedbot/DATABASE&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.general&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/DATABASE" />
       <recent name="C:\Users\alekf\OneDrive\Desktop\Python\ourlogopedbot" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -185,7 +197,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-53e2683a6804-9cdd278e9d02-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-251.26094.141" />
+        <option value="bundled-python-sdk-8753aad8314d-d902c0275401-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-252.25557.178" />
       </set>
     </attachedChunks>
   </component>

@@ -32,7 +32,6 @@ def main():
     """
 
     create_models()
-
     bot = telebot.TeleBot(BOT_TOKEN, state_storage=state_storage)
     bot.add_custom_filter(custom_filters.StateFilter(bot))
     reg_menu_handlers(bot)

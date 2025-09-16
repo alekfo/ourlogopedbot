@@ -23,11 +23,11 @@ def reg_schedule_handlers(bot: TeleBot):
 
 # ========БЛОК ВЫБОРА ДЕЙСТВИЯ НАД РАСПИСАНИЕМ===========
     @bot.message_handler(state=reg_states_admin.in_any_block,
-                         func=lambda message: message.text == 'Управление расписанием')
+                         func=lambda message: 'Управление расписанием' in message.text)
     def schedule_actions(message: Message):
         bot.send_message(message.chat.id,
                          'Выберите действие с расписанием',
-                         reply_markup=schedule_menu())
+                         reply_markup=schedule_menu(), parse_mode='HTML')
         bot.set_state(message.from_user.id, reg_states_admin.in_schedule, message.chat.id)
 # ========КОНЕЦ БЛОКА ВЫБОРА ДЕЙСТВИЯ НАД РАСПИСАНИЕМ===========
 
@@ -35,25 +35,25 @@ def reg_schedule_handlers(bot: TeleBot):
     @bot.message_handler(state= [reg_states_admin.in_schedule,
                                  reg_states_admin.process_file,
                                  reg_states_admin.show_schedule],
-                        func=lambda message: message.text == 'Перейти в основное меню')
+                        func=lambda message: 'Перейти в основное меню' in message.text)
     def return_to_menu(message: Message):
         bot.send_message(message.chat.id,
                          'Выберите действие',
-                         reply_markup=main_admin_commands())
+                         reply_markup=main_admin_commands(), parse_mode='HTML')
         bot.set_state(message.from_user.id, reg_states_admin.in_any_block, message.chat.id)
 #====КОНЕЦ БЛОКА ОТМЕНЫ=++===
 
 
 # ========ДОБАВЛЕНИЕ РАСПИСАНИЯ===========
     @bot.message_handler(state=reg_states_admin.in_schedule,
-                         func=lambda message: message.text == 'Добавить расписание')
+                         func=lambda message: 'Добавить расписание' in message.text)
     def add_schedule(message: Message):
         bot.send_message(message.chat.id,
                          'Отправьте файл формата .xlsx\n'
                          'В строках файла должны содержаться дни недели (кроме воскресенья),\n'
                          'в столбцах - разбивка по урокам\n\n'
                          'Для избежания ошибок при загрузке рекомендуется ознакомиться с образцом загрузочного файла',
-                         reply_markup=go_to_menu())
+                         reply_markup=go_to_menu(), parse_mode='HTML')
         bot.set_state(message.from_user.id, reg_states_admin.process_file, message.chat.id)
 # ========КОНЕЦ БЛОКА ДОБАВЛЕНИЯ РАСПИСАНИЯ===========
 
@@ -96,7 +96,7 @@ def reg_schedule_handlers(bot: TeleBot):
                             raise TypeError(f'В расписание добавлен не зарегистрированный пользователь - {cell}. '
                                             'Проверьте файл')
         except Exception as e:
-            bot.send_message(message.chat.id, f"❌ Ошибка при обработке файла: {str(e)}", reply_markup=go_to_menu())
+            bot.send_message(message.chat.id, f"❌ Ошибка при обработке файла: {str(e)}", reply_markup=go_to_menu(), parse_mode='HTML')
             bot.set_state(message.from_user.id, reg_states_admin.admin_menu, message.chat.id)
         else:
             output_str = 'Данные успешно добавлены✅ \nРасписание текущей недели:\n'
@@ -118,18 +118,18 @@ def reg_schedule_handlers(bot: TeleBot):
                 output_str += '\n' + i_day + '\n'
                 for i_less in lessons:
                     output_str += f'{i_less[0]} - {i_less[1]} {i_less[2]}\n'
-            bot.send_message(message.chat.id, output_str, reply_markup=go_to_menu())
+            bot.send_message(message.chat.id, output_str, reply_markup=go_to_menu(), parse_mode='HTML')
             bot.set_state(message.from_user.id, reg_states_admin.admin_menu, message.chat.id)
 # ========КОНЕЦ ОБРАБОТКИ ФАЙЛА===========
 
 # ========ЗАПРОС ДАТЫ НА ПОКАЗ РАСПИСАНИЯ===========
     @bot.message_handler(state=reg_states_admin.in_schedule,
-                         func=lambda message: message.text == 'Посмотреть расписание')
+                         func=lambda message: 'Посмотреть расписание' in message.text)
     def show_schedule(message: Message):
         bot.send_message(message.chat.id,
                          'Пришлите дату понедельника недели, расписание которой хотите посмотреть\n'
                          'Формат даты: DD.MM.YYYY',
-                         reply_markup=go_to_menu())
+                         reply_markup=go_to_menu(), parse_mode='HTML')
         bot.set_state(message.from_user.id, reg_states_admin.show_schedule, message.chat.id)
 # ========КОНЕЦ БЛОКА ЗАПРОСА ДАТЫ ПОКАЗАТЬ РАСПИСАНИЕ===========
 
@@ -161,7 +161,7 @@ def reg_schedule_handlers(bot: TeleBot):
                     for i_less in lessons:
                         output_str += f'{i_less[0]} - {i_less[1]} {i_less[2]}\n'
                 bot.send_message(message.chat.id,
-                                 output_str, reply_markup=go_to_menu())
+                                 output_str, reply_markup=go_to_menu(), parse_mode='HTML')
                 bot.set_state(message.from_user.id, reg_states_admin.admin_menu, message.chat.id)
             else:
                 raise TypeError('Введите данные формата DD.MM.YYYY')
