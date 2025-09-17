@@ -3,6 +3,7 @@ from telebot.storage import StateMemoryStorage
 from telebot import custom_filters
 from config import BOT_TOKEN
 import threading
+from config import admin_id
 
 from handlers.start_handlers import reg_start_handlers
 from handlers.menu_handlers import reg_menu_handlers
@@ -53,6 +54,8 @@ def main():
         daemon=True  # Поток завершится при завершении основного потока
     )
     notification_thread.start()
+    bot.send_message(admin_id,
+                     f'Поток уведомлений запущен')
 
     bot.infinity_polling()
 

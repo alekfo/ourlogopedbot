@@ -3,12 +3,13 @@ from keyboards.main_keyboards import confirmation_markup
 from datetime import datetime, timedelta
 import time
 from telebot import TeleBot
+from config import admin_id
 
 def check_upcoming_lessons(bot: TeleBot):
     while True:
         try:
-            now = datetime.now()
-            target_time = now + timedelta(hours=5)
+            now_moscow = datetime.now()
+            target_time = now_moscow + timedelta(hours=5)
             formated_target_time = target_time.time().strftime('%H:%M')
 
             upcoming_lessons = Lesson.select().where(
@@ -39,10 +40,13 @@ def check_upcoming_lessons(bot: TeleBot):
                         i_lesson.save()
                         print(f"Отправлено напоминание клиенту {i_lesson.client.clients_name}")
                     except Exception as e:
-                        print(f"Ошибка отправки напоминания: {e}")
+                        bot.send_message(admin_id,
+                                         f'Произошла ошибка при отправке уведомления пользователю - '
+                                         f'{i_lesson.client.clients_name} {i_lesson.client.clients_sirname}: {e}')
 
             time.sleep(60)
 
         except Exception as e:
-            print(f"Ошибка в функции проверки уроков: {e}")
+            bot.send_message(admin_id,
+                             f'Произошла ошибка в цикле оповещения: {e}')
             time.sleep(300)  # Ждем 5 минут при ошибке

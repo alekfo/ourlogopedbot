@@ -93,7 +93,7 @@ def reg_clients_handlers(bot):
                 date = curr_feedback.feedback_date
                 text = message.text
                 bot.send_message(admin_id,
-                                 f'🎆{curr_client.clients_name} {curr_client.clients_sirname} оставил новый отзыв:\n\n"{text}"\n',
+                                 f'🎆{curr_client.clients_name} {curr_client.clients_sirname} оставил(-а) новый отзыв:\n\n"{text}"\n',
                                  reply_markup=go_to_menu(), parse_mode='HTML')
             except Exception as e:
                 print('Ошибка отправки админу отзыва:', e)
@@ -114,11 +114,11 @@ def reg_clients_handlers(bot):
         if action == 'confirmed':
             status_text = 'Подтверждено✅'
             reply_text = 'Ждем Вас к назначенному часу!🙋‍♀️'
-            admin_message = 'подтвердил'
+            admin_message = 'подтвердил(-а)'
         else:
             status_text = 'Отменено❌'
             reply_text = 'Спасибо за уведомление! Свяжитесь с преподавателем, чтобы назначить дату нового занятия!☎️'
-            admin_message = 'ОТМЕНИЛ'
+            admin_message = 'ОТМЕНИЛ(-А)'
 
         new_text = f'{original_text}\n\n{status_text}'
         #Редактируем сообщение

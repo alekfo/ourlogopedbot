@@ -4,23 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b5e7868-f73e-4f85-a9bf-b8ab30017f45" name="Changes" comment="for_docker">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/ourlogopedbot.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ourlogopedbot.iml" afterDir="false" />
+    <list default="true" id="5b5e7868-f73e-4f85-a9bf-b8ab30017f45" name="Changes" comment="from_my_new_vm">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/handlers/clients_handlers.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/clients_handlers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/downloads_handlers.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/downloads_handlers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/info_for_admin_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/info_for_admin_handler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/mass_mailing_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/mass_mailing_handler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/menage_clients.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/menage_clients.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/menu_handlers.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/menu_handlers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/registration_handlers.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/registration_handlers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/handlers/schedule/menage_schedule.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/schedule/menage_schedule.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/schedule/schedule_handlers.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/schedule/schedule_handlers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/start_handlers.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/start_handlers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/keyboards/main_keyboards.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/main_keyboards.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/notifications.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/notifications.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +28,22 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitLabMergeRequestFiltersHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPENED&quot;,
+    &quot;assignee&quot;: {
+      &quot;type&quot;: &quot;org.jetbrains.plugins.gitlab.mergerequest.ui.filters.GitLabMergeRequestsFiltersValue.MergeRequestsMemberFilterValue.MergeRequestsAssigneeFilterValue&quot;,
+      &quot;username&quot;: &quot;aleksei_shlenskov&quot;,
+      &quot;fullname&quot;: &quot;Алексей Шленсков&quot;
+    }
+  }
+}</component>
+  <component name="GitLabMergeRequestsSettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;first&quot;: &quot;https://gitlab.skillbox.ru/aleksei_shlenskov/ourlogopedbot.git&quot;,
+    &quot;second&quot;: &quot;53441c77-3c7d-43a5-ac3e-d79707a6e48a&quot;
+  }
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
 }</component>
@@ -305,7 +312,15 @@
       <option name="project" value="LOCAL" />
       <updated>1757746522074</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="from_my_new_vm">
+      <option name="closed" value="true" />
+      <created>1758016172102</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1758016172102</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -332,6 +347,7 @@
     <MESSAGE value="change_schedule_output" />
     <MESSAGE value="menage_lessons_draft" />
     <MESSAGE value="for_docker" />
-    <option name="LAST_COMMIT_MESSAGE" value="for_docker" />
+    <MESSAGE value="from_my_new_vm" />
+    <option name="LAST_COMMIT_MESSAGE" value="from_my_new_vm" />
   </component>
 </project>

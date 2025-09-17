@@ -27,7 +27,8 @@ def reg_menage_schedule_handlers(bot: TeleBot):
     @bot.message_handler(state=[reg_states_admin.in_schedule,
                                 reg_states_admin.get_lesson_number,
                                 reg_states_admin.delete_confirmation,
-                                reg_states_admin.create_lesson],
+                                reg_states_admin.create_lesson,
+                                reg_states_admin.choisen_action],
                          func=lambda message: 'Перейти в основное меню' in message.text)
     def return_to_menu(message: Message):
         bot.send_message(message.chat.id,
