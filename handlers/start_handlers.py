@@ -1,25 +1,35 @@
-from peewee import IntegrityError, DoesNotExist
-import telebot
+from peewee import DoesNotExist
 from telebot import TeleBot
-from telebot.types import Message, BotCommand, ReplyKeyboardRemove
+from telebot.types import Message
 from config import admin_id
-from DATABASE.peewee_config import Client, Week, Lesson
+from DATABASE.peewee_config import Client
 from states import reg_states_client, reg_states_admin
 from keyboards.main_keyboards import (
     start_registration,
-    go_to_menu,
-    get_contact,
-    main_clients_commands,
-    main_admin_commands,
-    schedule_menu)
-
-
+    go_to_menu)
 
 def reg_start_handlers(bot: TeleBot):
+    """
+    Функция для регистрации обработчика первого стартового сообщения
+    :param bot: переменная с приложением
+    :return: None
+    """
 
-#=====БЛОК ОБРАБОТКИ ПЕРВОГО СООБЩЕНИЯ=======
     @bot.message_handler(state=None, func=lambda message: True)
     def first_message(message: Message):
+        """
+        Обработчик фиксирует любые сообщения, когда сценарий еще не запущен и состояние не задано.
+        Функция делает запрос к базе данных для получения модели пользователя. При подтверждении регистрации
+        пользователю отправляется приветственное сообщение с предложением пройти в основное меню, состояние
+        пользователя меняется на reg_states_client.in_menu.
+        При отсутствии пользователя в базе даных проверяется, является ли пользователь администратором: если не является -
+        отправляется приветственное сообщение с предложением пройти регистрацию по кнопке, состояние меняется на reg_states_client.start_registration;
+        если пользователь является администратором - предлагается пройти в основное меню администратора, состояние пользователя меняется ан
+        reg_states_admin.admin_menu
+        :param message: сообщения от пользователя;
+        :return: None
+        """
+
         try:
             client = Client.get(Client.clients_id == message.from_user.id)
             bot.send_message(message.chat.id,

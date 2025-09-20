@@ -6,6 +6,16 @@ from telebot import TeleBot
 from config import admin_id
 
 def check_upcoming_lessons(bot: TeleBot):
+    """
+    Функция для организации бесконечного цикла оповещения:
+    - устанавилвает целевое время оповещения (текущее время + 5 часов);
+    - ищет все уроки, время которых приближается к целевому времени оповещения;
+    - отправляет оповещение клиенту, который записан на найденный урок
+    - обрабатывает ошибки, отправляет их админу
+    :param bot: переменная с приложением
+    :return: None
+    """
+
     while True:
         try:
             now_moscow = datetime.now()
@@ -44,7 +54,7 @@ def check_upcoming_lessons(bot: TeleBot):
                                          f'Произошла ошибка при отправке уведомления пользователю - '
                                          f'{i_lesson.client.clients_name} {i_lesson.client.clients_sirname}: {e}')
 
-            time.sleep(60)
+            time.sleep(300)
 
         except Exception as e:
             bot.send_message(admin_id,

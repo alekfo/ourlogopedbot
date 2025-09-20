@@ -28,3 +28,4 @@ class reg_states_admin(StatesGroup):
     get_lesson_number = State()
     delete_confirmation = State()
     create_lesson = State()
+    delete_client = State()

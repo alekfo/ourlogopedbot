@@ -27,12 +27,14 @@ def main():
     сервера телеграма.
     Переменной bot присваивается объект класса TeleBot.
     Переменная bot регистрирует все возможные сценарии полученных сообщений
-    в функции reg_handlers.
+    в функциях reg_.
     С помощью bot.infinity_polling() запускается бесконечный цикл опроса API
     телеграма
+    С помощью notification_thread.start() запускает отдельный поток для отправки уведомлений о предстоящих занятиях
     """
 
     create_models()
+
     bot = telebot.TeleBot(BOT_TOKEN, state_storage=state_storage)
     bot.add_custom_filter(custom_filters.StateFilter(bot))
     reg_menu_handlers(bot)
@@ -54,8 +56,6 @@ def main():
         daemon=True  # Поток завершится при завершении основного потока
     )
     notification_thread.start()
-    bot.send_message(admin_id,
-                     f'Поток уведомлений запущен')
 
     bot.infinity_polling()
 

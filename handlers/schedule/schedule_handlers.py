@@ -34,7 +34,9 @@ def reg_schedule_handlers(bot: TeleBot):
 #====НАЧАЛО БЛОКА ОТМЕНЫ=++===
     @bot.message_handler(state= [reg_states_admin.in_schedule,
                                  reg_states_admin.process_file,
-                                 reg_states_admin.show_schedule],
+                                 reg_states_admin.show_schedule,
+                                 reg_states_admin.delete_client,
+                                 reg_states_admin.mass_mailing_state],
                         func=lambda message: 'Перейти в основное меню' in message.text)
     def return_to_menu(message: Message):
         bot.send_message(message.chat.id,
@@ -93,13 +95,13 @@ def reg_schedule_handlers(bot: TeleBot):
                                 lesson_number=i_col - 2
                             )
                         else:
-                            raise TypeError(f'В расписание добавлен не зарегистрированный пользователь - {cell}. '
+                            raise TypeError(f'В расписание добавлен не зарегистрированный пользователь - <b>{cell}</b>. '
                                             'Проверьте файл')
         except Exception as e:
             bot.send_message(message.chat.id, f"❌ Ошибка при обработке файла: {str(e)}", reply_markup=go_to_menu(), parse_mode='HTML')
             bot.set_state(message.from_user.id, reg_states_admin.admin_menu, message.chat.id)
         else:
-            output_str = 'Данные успешно добавлены✅ \nРасписание текущей недели:\n'
+            output_str = f'Данные успешно добавлены✅\n\nРасписание загруженной (<b>{monday_data.strftime("%d.%m.%Y")}</b>) недели:\n'
             lessons_list = Lesson.select().where(Lesson.weekly_schedule == curr_week)
             lesson_dict = {}
             for i_less in lessons_list:
@@ -115,7 +117,7 @@ def reg_schedule_handlers(bot: TeleBot):
                         i_less.client.clients_name,
                         i_less.client.clients_sirname])
             for i_day, lessons in lesson_dict.items():
-                output_str += '\n' + i_day + '\n'
+                output_str += '\n' + f'<b>{i_day}</b>' + '\n'
                 for i_less in lessons:
                     output_str += f'{i_less[0]} - {i_less[1]} {i_less[2]}\n'
             bot.send_message(message.chat.id, output_str, reply_markup=go_to_menu(), parse_mode='HTML')
@@ -128,7 +130,7 @@ def reg_schedule_handlers(bot: TeleBot):
     def show_schedule(message: Message):
         bot.send_message(message.chat.id,
                          'Пришлите дату понедельника недели, расписание которой хотите посмотреть\n'
-                         'Формат даты: DD.MM.YYYY',
+                         'Формат даты: <b>DD.MM.YYYY</b>',
                          reply_markup=go_to_menu(), parse_mode='HTML')
         bot.set_state(message.from_user.id, reg_states_admin.show_schedule, message.chat.id)
 # ========КОНЕЦ БЛОКА ЗАПРОСА ДАТЫ ПОКАЗАТЬ РАСПИСАНИЕ===========
@@ -141,10 +143,11 @@ def reg_schedule_handlers(bot: TeleBot):
             if len(check_format_list) == 3 and 0 < int(check_format_list[0]) <= 31 and 0 < int(check_format_list[1]) <= 12 and int(check_format_list[2]) > 0:
                 formated_data = datetime.strptime(message.text, "%d.%m.%Y").date()
                 curr_week = Week.get_or_none(Week.monday_date == formated_data)
-                lesson_list = curr_week.lessons
-                output_str = f'Расписание текущей ({curr_week}) недели:\n'
+                lesson_list = list(curr_week.lessons)
+                sorted_lesson_list = sorted(lesson_list, key=lambda i_lesson: (i_lesson.day_of_week, i_lesson.lesson_number))
+                output_str = f'🕐Расписание текущей (<b>{curr_week}</b>) недели:\n'
                 lesson_dict = {}
-                for i_less in lesson_list:
+                for i_less in sorted_lesson_list:
                     if i_less.days_dict.get(i_less.day_of_week) in lesson_dict:
                         lesson_dict[i_less.days_dict.get(i_less.day_of_week)].append([
                             i_less.lessons_dict.get(i_less.lesson_number),
@@ -157,14 +160,14 @@ def reg_schedule_handlers(bot: TeleBot):
                             i_less.client.clients_name,
                             i_less.client.clients_sirname])
                 for i_day, lessons in lesson_dict.items():
-                    output_str += '\n' + i_day + '\n'
+                    output_str += '\n' + f'<b>{i_day}</b>' + '\n'
                     for i_less in lessons:
                         output_str += f'{i_less[0]} - {i_less[1]} {i_less[2]}\n'
                 bot.send_message(message.chat.id,
                                  output_str, reply_markup=go_to_menu(), parse_mode='HTML')
                 bot.set_state(message.from_user.id, reg_states_admin.admin_menu, message.chat.id)
             else:
-                raise TypeError('Введите данные формата DD.MM.YYYY')
+                raise TypeError('Введите данные формата <b>DD.MM.YYYY</b>')
         except Exception as e:
-            bot.send_message(message.chat.id,f'{e} - Введите данные формата DD.MM.YYYY')
+            bot.send_message(message.chat.id,f'{e} - Введите данные формата <b>DD.MM.YYYY</b>', parse_mode='HTML')
 # ========КОНЕЦ БЛОКА ПОКАЗ РАСПИСАНИЯ===========

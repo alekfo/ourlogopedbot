@@ -20,35 +20,46 @@ from keyboards.main_keyboards import (
 
 
 def reg_mass_mailing_handler(bot: TeleBot):
-    # ========БЛОК ЗАПРОСА СООБЩЕНИЯ ДЛЯ РАССЫЛКИ===========
+    """
+    Функция для регистрации обработчиков для массовой рассылки всем активным клинтам
+    :param bot: переменная с приложением
+    :return: None
+    """
+
     @bot.message_handler(state=reg_states_admin.in_any_block,
                          func=lambda message: 'Сделать рассылку' in message.text)
     def get_message(message: Message):
+        """
+        Обработчик состояния in_any_block при нажатии на кнопку "Сделать рассылку".
+        Предлагает пользователю отправить сообщение для массовой рассылки.
+        Дает возможность вернуться в основное меню кнопкой "Перейти в основное меню".
+        Меняет состояние пользователя на reg_states_admin.mass_mailing_state
+        :param message: переменная с приложением
+        :return: None
+        """
+
         bot.send_message(message.chat.id,
-                        'Напишите сообщение\nПРЕДУПРЕЖДЕНИЕ: данное сообщение отправится всем зарегистрированным клиентам\n'
-                        'Для отмены нажмите на кнопку "Перейти в основное меню"',
+                        'Напишите сообщение\n<b>ПРЕДУПРЕЖДЕНИЕ</b>: данное сообщение отправится <b>всем зарегистрированным</b> клиентам\n'
+                        'Для отмены нажмите на кнопку <b>Перейти в основное меню</b>',
                         reply_markup=go_to_menu(), parse_mode='HTML')
         bot.set_state(message.from_user.id, reg_states_admin.mass_mailing_state, message.chat.id)
 
-    # ========КОНЕЦ БЛОКА ЗАПРОСА СООБЩЕНИЯ ДЛЯ РАССЫЛКИ===========
-
-
-    #====БЛОК РАССЫЛКИ====
     @bot.message_handler(state=reg_states_admin.mass_mailing_state)
     def mass_mailing(message: Message):
-        if 'Перейти в основное меню' in message.text:
-            bot.send_message(message.chat.id,
-                             'Выберите действие',
-                             reply_markup=main_admin_commands(), parse_mode='HTML')
-            bot.set_state(message.from_user.id, reg_states_admin.in_any_block, message.chat.id)
-        else:
-            clients = Client.select()
-            for i_client in clients:
-                bot.send_message(i_client.clients_chat_id,
-                                 message.text)
-            bot.send_message(message.chat.id,
-                             'Сообщение отправлено всем пользователям\nПри ошибочной отправке рекомендуется обратиться к клиентам лично.',
-                             reply_markup=go_to_menu(), parse_mode='HTML')
-            bot.set_state(message.from_user.id, reg_states_admin.admin_menu, message.chat.id)
+        """
+        Обработчкик состояния после отправки админом сообщения для массовой рассылки.
+        Выбирает из базы данных всех активных клинтов.
+        Отправлет всем активным клиентам сообщение от админа.
+        Отправляет в ответ админу подтверждение об отправке рассылки.
+        Меняет состояние на reg_states_admin.admin_menu
+        :param message: переменная с приложением
+        :return: None
+        """
 
-    # ====КОНЕЦ БЛОКА РАССЫЛКИ====
+        clients = Client.select()
+        for i_client in clients:
+            bot.send_message(i_client.clients_chat_id, message.text)
+        bot.send_message(message.chat.id,
+                         'Сообщение отправлено всем пользователям✅\nПри ошибочной отправке рекомендуется обратиться к клиентам лично.',
+                         reply_markup=go_to_menu(), parse_mode='HTML')
+        bot.set_state(message.from_user.id, reg_states_admin.admin_menu, message.chat.id)

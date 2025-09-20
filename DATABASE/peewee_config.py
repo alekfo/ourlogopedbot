@@ -66,7 +66,7 @@ class Lesson(BaseModel):
     weekly_schedule = ForeignKeyField(Week, backref='lessons', on_delete='CASCADE')
     # Если клиент удаляется, можно либо установить NULL, либо запретить удаление.
     # RESTRICT или PROTECT не даст удалить клиента, если у него есть записи.
-    client = ForeignKeyField(Client, backref='lessons', on_delete='RESTRICT', null=True)
+    client = ForeignKeyField(Client, backref='lessons', on_delete='CASCADE')
     day_of_week = IntegerField(constraints=[Check('day_of_week >= 0 AND day_of_week <= 5')])
     lesson_number = IntegerField(constraints=[Check('lesson_number >= 1 AND lesson_number <= 11')])
 
@@ -90,15 +90,14 @@ class Lesson(BaseModel):
 
 class Feedback(BaseModel):
     feedback_id = IntegerField(primary_key=True)
-    client = ForeignKeyField(Client, backref='feedback')
+    client = CharField(null=False)
     text = CharField(null=False)
     feedback_date = DateTimeField(null=False)
 
     def __str__(self):
-        return ('{date}: {client_name} {client_sirname} оставил следующее сообщение:\n{text}').format(
+        return ('{date}: {client_name} оставил следующее сообщение:\n{text}').format(
             date=self.feedback_date,
-            client_name=self.client.clients_name,
-            client_sirname=self.client.clients_sirname,
+            client_name=self.client,
             text=self.text
         )
 
