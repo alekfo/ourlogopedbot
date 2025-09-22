@@ -1,16 +1,22 @@
-from datetime import datetime
 from peewee import *
-import os
 from config import db_path
-import datetime
 
 db = SqliteDatabase(db_path)
 
 class BaseModel(Model):
+    """
+    Создание объекта базы данных на основе SqliteDatabase.
+    Родитель для всех остальных моделей
+    """
     class Meta:
         database = db
 
 class Client(BaseModel):
+    """
+    Модель клиента. Является наследником основного объекта БД.
+    Содержит информацию об одном клиенте
+    """
+
     clients_id = IntegerField(primary_key=True)
     clients_chat_id = IntegerField(null=False)
     clients_name = CharField(null=False)
@@ -29,6 +35,11 @@ class Client(BaseModel):
         )
 
 class Week(BaseModel):
+    """
+    Модель недели. Является наследником основного объекта БД.
+    Содержит информацию с датой понедельника недели
+    """
+
     schedule_id = AutoField(primary_key=True)
     monday_date = DateField(unique=True)
 
@@ -36,6 +47,13 @@ class Week(BaseModel):
         return str(self.monday_date)
 
 class Lesson(BaseModel):
+    """
+    Модель урока. Является наследником основного объекта БД.
+    Содержит информацию об уроке: дата урока, статус подтвержденности урока,
+    принадлежность к объекту недели, принадлежность к объекту клинта,
+    денб недели, номер урока
+    """
+
     days_dict = {
         0: 'Понедельник',
         1: 'Вторник',
@@ -89,6 +107,11 @@ class Lesson(BaseModel):
         database = db
 
 class Feedback(BaseModel):
+    """
+    Модель обратной связи. Является наследником основного объекта БД.
+    Содержит информацию об одной записи в таблицу обратной связи.
+    """
+
     feedback_id = IntegerField(primary_key=True)
     client = CharField(null=False)
     text = CharField(null=False)
