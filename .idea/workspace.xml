@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b5e7868-f73e-4f85-a9bf-b8ab30017f45" name="Changes" comment="change_readme">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    <list default="true" id="5b5e7868-f73e-4f85-a9bf-b8ab30017f45" name="Changes" comment="change_readme2">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -314,7 +314,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758714834005</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="change_readme2">
+      <option name="closed" value="true" />
+      <created>1758715528809</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1758715528809</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -344,6 +352,7 @@
     <MESSAGE value="sorting_output_data, doc_strings" />
     <MESSAGE value="doc_strings, screenshots" />
     <MESSAGE value="change_readme" />
-    <option name="LAST_COMMIT_MESSAGE" value="change_readme" />
+    <MESSAGE value="change_readme2" />
+    <option name="LAST_COMMIT_MESSAGE" value="change_readme2" />
   </component>
 </project>

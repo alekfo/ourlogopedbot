@@ -4,7 +4,7 @@
 
  [Свяжитесь с нашим ботом:](https://t.me/OURLogopedBot)
 
- Ссылка на репозиторий: https://gitlab.skillbox.ru/aleksei_shlenskov/ourlogopedbot
+ Ссылка на репозиторий: https://github.com/alekfo/ourlogopedbot.git
 
 # Описание прокта
 Данный чат-бот дает возможность управления процессом организации занятий в центре "ЛОГОПЕДия"
