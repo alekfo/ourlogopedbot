@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5b5e7868-f73e-4f85-a9bf-b8ab30017f45" name="Changes" comment="sorting_output_data, doc_strings">
+    <list default="true" id="5b5e7868-f73e-4f85-a9bf-b8ab30017f45" name="Changes" comment="doc_strings, screenshots">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DATABASE/peewee_config.py" beforeDir="false" afterPath="$PROJECT_DIR$/DATABASE/peewee_config.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/schedule/menage_schedule.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/schedule/menage_schedule.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/schedule/schedule_handlers.py" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/schedule/schedule_handlers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards/main_keyboards.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards/main_keyboards.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -303,7 +299,15 @@
       <option name="project" value="LOCAL" />
       <updated>1758376361601</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="doc_strings, screenshots">
+      <option name="closed" value="true" />
+      <created>1758551569701</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1758551569702</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -331,6 +335,7 @@
     <MESSAGE value="menage_lessons_draft" />
     <MESSAGE value="for_docker" />
     <MESSAGE value="sorting_output_data, doc_strings" />
-    <option name="LAST_COMMIT_MESSAGE" value="sorting_output_data, doc_strings" />
+    <MESSAGE value="doc_strings, screenshots" />
+    <option name="LAST_COMMIT_MESSAGE" value="doc_strings, screenshots" />
   </component>
 </project>

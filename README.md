@@ -4,7 +4,7 @@
 
  [Свяжитесь с нашим ботом:](https://t.me/OURLogopedBot)
 
- [Ссылка на репозиторий:](https://gitlab.skillbox.ru/aleksei_shlenskov/ourlogopedbot)
+ Ссылка на репозиторий: https://gitlab.skillbox.ru/aleksei_shlenskov/ourlogopedbot
 
 # Описание прокта
 Данный чат-бот дает возможность управления процессом организации занятий в центре "ЛОГОПЕДия"
@@ -57,12 +57,23 @@ ADMIN_ID=YOUR_ADMIN_ID
 DATABASE_PATH=YOUR_DATABASE_PATH
 ```
 
-### Запуск проекта
+### Запуск проекта через консоль
 ```markdown
 bash
 cd ourlogopedbot
 python main.py
 ```
+
+### Сборка контейнера Docker
+В проекте уже собраны Dockerfile и docker-compose.yml. Для сборки образа docker и запуска контейнера необходимо указать путь до файла с базой данных
+на вашем локальном устройстве заменив строку '- "/home/vboxuser/PycharmProjects/ourlogopedbot/DATABASE:/app/data"' на ваш путь.
+Для сборки образа и запуска контейнера:
+```
+bash
+cd ourlogopedbot
+docker compose up -d
+```
+
 # Использование
 
 ### Основные команды
