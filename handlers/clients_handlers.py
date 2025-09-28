@@ -58,7 +58,7 @@ def reg_clients_handlers(bot: TeleBot):
         active_lessons = [
             i_lesson
             for i_lesson in lessons
-            if i_lesson.lesson_date >= current_date and int(i_lesson.lessons_dict.get(i_lesson.lesson_number).split(':')[0]) >= int(curr_time_list[0])
+            if i_lesson.lesson_date > current_date or (i_lesson.lesson_date == current_date and int(i_lesson.lessons_dict.get(i_lesson.lesson_number).split(':')[0]) >= int(curr_time_list[0]))
         ]
         if not active_lessons:
             bot.send_message(message.chat.id, "У вас нет запланированных занятий", reply_markup=go_to_menu(), parse_mode='HTML')
