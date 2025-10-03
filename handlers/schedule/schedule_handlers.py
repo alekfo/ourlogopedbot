@@ -104,9 +104,14 @@ def reg_schedule_handlers(bot: TeleBot):
             sheet = workbook.active
             monday_data = sheet.cell(2, 2).value                        #забираем значение из ячейки
             # formated_data = datetime.strptime(monday_data, "%d.%m.%Y").date()      #преобразуем в DateField
-            Week.delete().where(Week.monday_date == monday_data).execute()                  # Удаляем для избежания повтора уникальности
+
+            existing_week = Week.get_or_none(Week.monday_date == monday_data)
+            if existing_week:
+                # Удаляем все уроки этой недели
+                Lesson.delete().where(Lesson.weekly_schedule == existing_week).execute()
+                existing_week.delete_instance()                 # Удаляем для избежания повтора уникальности
+
             curr_week = Week.create(monday_date=monday_data)
-            Lesson.delete().where(Lesson.weekly_schedule == curr_week).execute()
             for i_row in range(2, 8):
                 for i_col in range(3, 14):
                     cell = sheet.cell(i_row, i_col).value

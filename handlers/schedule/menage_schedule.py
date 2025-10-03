@@ -146,7 +146,7 @@ def reg_menage_schedule_handlers(bot: TeleBot):
         curr_lesson = Lesson.get_or_none(Lesson.lesson_number == choisen_lesson,
                                          Lesson.weekly_schedule == last_week,
                                          Lesson.day_of_week == curr_weekday)
-        if 'Удалить урок' in action:
+        if 'Удалить занятие' in action:
             if curr_lesson:
                 curr_client = curr_lesson.client
                 with bot.retrieve_data(message.from_user.id, message.chat.id) as data:
@@ -161,7 +161,7 @@ def reg_menage_schedule_handlers(bot: TeleBot):
                 bot.send_message(message.chat.id,
                                  f'На это время никого нет. Выберите другое время',
                                  reply_markup=lessons_markup(), parse_mode='HTML')
-        elif 'Добавить урок' in action:
+        elif 'Добавить занятие' in action:
             if curr_lesson:
                 bot.send_message(message.chat.id,
                                  f'Это время занято. Выберите другое время',
